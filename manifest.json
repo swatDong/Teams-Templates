@@ -1,0 +1,38 @@
+{
+    "function-base": {
+        "JavaScript": {
+            "default": [{
+                "version": "0.1.0",
+                "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.1/function-base_JavaScript_default_0.1.0.zip"
+            }]
+        },
+        "CSharp": {
+            "default": [{
+                "version": "0.1.0",
+                "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.1/function-base_CSharp_default_0.1.0.zip"
+            }]
+        }
+    },
+    "function-triggers": {
+        "JavaScript": {
+            "HTTPTrigger": [{
+                "version": "0.1.0",
+                "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.1/function-triggers_JavaScript_HTTPTrigger_0.1.0.zip"
+            }]
+        },
+        "CSharp": {
+            "HTTPTrigger": [{
+                "version": "0.1.0",
+                "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.1/function-triggers_CSharp_HTTPTrigger_0.1.0.zip"
+            }]
+        }
+    },
+    "tab": {
+        "JavaScript": {
+            "default": [{
+                "version": "0.1.0",
+                "url":"https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.2/tab_JavaScript_default_0.1.0.zip"
+            }]
+        }
+    }
+}
