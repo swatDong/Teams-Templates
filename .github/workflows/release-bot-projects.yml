@@ -14,16 +14,20 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    
-    - name: Get Latest Tag
-      uses: oprypin/find-latest-tag@v1
-      id: latest
-
+ 
+    - name: Checkout
+      uses: actions/checkout@v2.3.4
+      with:
+        fetch-depth: 0
+        
+    - name: 'Get Previous tag'
+      id: previoustag
+      uses: "WyriHaximus/github-action-get-previous-tag@v1"
+      
     - name: Checkout Latest Tag
       uses: actions/checkout@v2.3.4
       with:
-        repository: ${{ github.repository }}
-        ref: ${{ steps.latest.outputs.tag }}
+        ref: ${{ steps.previoustag.outputs.tag }}
     
     - name: Zip JavaScript Project
       run: zip -r bot_JavaScript_default_0.1.0.zip ./bot/js/*
