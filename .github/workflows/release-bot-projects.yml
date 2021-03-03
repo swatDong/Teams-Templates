@@ -3,10 +3,9 @@
 name: Release Bot Projects
 
 on:
-  workflow_dispatch:
-    # Inputs the workflow accepts.
-    inputs:
-      
+  create:
+    tags:
+      - *
 jobs:
   # This workflow contains a single job called "greet"
   allinone:
@@ -34,8 +33,3 @@ jobs:
         artifacts: ./*.zip, manifest.json
         name: "test"
         token: ${{ secrets.GITHUB_TOKEN }}
-        
-      
-    
-    
-      
