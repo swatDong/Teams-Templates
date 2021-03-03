@@ -30,13 +30,13 @@ jobs:
         ref: ${{ steps.previoustag.outputs.tag }}
     
     - name: Zip JavaScript Project
-      run: zip -r bot_JavaScript_default_0.1.0.zip ./bot/js/*
+      run: zip -r bot_JavaScript_default_${{ steps.previoustag.outputs.tag }}.zip ./bot/js/*
       
     - name: Zip TypeScript Project
-      run: zip -r bot_TypeScript_default_0.1.0.zip ./bot/ts/*
+      run: zip -r bot_TypeScript_default_${{ steps.previoustag.outputs.tag }}.zip ./bot/ts/*
       
     - name: Zip CSharp Project
-      run: zip -r bot_CSharp_default_0.1.0.zip ./bot/csharp/*
+      run: zip -r bot_CSharp_default_${{ steps.previoustag.outputs.tag }}.zip ./bot/csharp/*
       
     - name: Create Release
       uses: ncipollo/release-action@v1.7.3
