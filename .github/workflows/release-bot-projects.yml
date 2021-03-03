@@ -3,9 +3,9 @@
 name: Release Bot Projects
 
 on:
-  push:
-    branches:
-      - ruhe/templates_for_bot
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
       
 jobs:
   # This workflow contains a single job called "greet"
