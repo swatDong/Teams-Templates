@@ -5,7 +5,7 @@ name: Release Bot Projects
 on:
   create:
     tags:
-      - *
+      - 0.0.*
 jobs:
   # This workflow contains a single job called "greet"
   allinone:
@@ -17,6 +17,8 @@ jobs:
     
     - name: Checkout
       uses: actions/checkout@v2.3.4
+      with:
+        fetch-depth: 0
     
     - name: Zip JavaScript Project
       run: zip -r bot_JavaScript_default_0.1.0.zip ./bot/js/*
