@@ -28,8 +28,13 @@ jobs:
     - name: Zip CSharp Project
       run: zip -r bot_CSharp_default_0.1.0.zip ./bot/csharp/*
       
-    - name: Release To GitHub
-      run: echo "Release"
+    - name: Create Release
+      uses: ncipollo/release-action@v1.7.3
+      with:
+        artifacts: ./*.zip, manifest.json
+        name: "test"
+        
+      
     
     
       
