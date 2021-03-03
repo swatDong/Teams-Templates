@@ -33,6 +33,7 @@ jobs:
       with:
         artifacts: ./*.zip, manifest.json
         name: "test"
+        token: ${{ secrets.GITHUB_TOKEN }}
         
       
     
