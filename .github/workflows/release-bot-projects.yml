@@ -1,0 +1,35 @@
+# This is a basic workflow that is manually triggered
+
+name: Release Bot Projects
+
+on:
+  push:
+    branches:
+      ruhe/templates_for_bot
+      
+jobs:
+  # This workflow contains a single job called "greet"
+  allinone:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    
+    - name: Checkout
+      uses: actions/checkout@v2.3.4
+    
+    - name: Zip JavaScript Project
+      run: zip -r bot_JavaScript_default_0.1.0.zip ./bot/js/*
+      
+    - name: Zip TypeScript Project
+      run: zip -r bot_TypeScript_default_0.1.0.zip ./bot/ts/*
+      
+    - name: Zip CSharp Project
+      run: zip -r bot_CSharp_default_0.1.0.zip ./bot/csharp/*
+      
+    - name: Release To GitHub
+      run: echo "Release"
+    
+    
+      
