@@ -29,9 +29,6 @@ jobs:
       with:
         ref: ${{ steps.previoustag.outputs.tag }}
     
-    - name: Zip JavaScript Project
-      run: cd ./bot/js; zip -r ../../bot_JavaScript_default_${{ steps.previoustag.outputs.tag }}.zip .; cd ../..
-      
     - name: Zip TypeScript Project
       run: cd ./bot/ts; zip -r ../../bot_TypeScript_default_${{ steps.previoustag.outputs.tag }}.zip .; cd ../..
       
