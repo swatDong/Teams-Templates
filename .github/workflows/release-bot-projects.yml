@@ -42,5 +42,5 @@ jobs:
       uses: ncipollo/release-action@v1.7.3
       with:
         artifacts: ./*.zip, manifest.json
-        name: "test"
+        name: "Bot ${{ steps.previoustag.outputs.tag }}"
         token: ${{ secrets.GITHUB_TOKEN }}
