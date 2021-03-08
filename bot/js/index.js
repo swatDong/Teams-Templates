@@ -3,19 +3,15 @@
 
 // index.js is used to setup and configure your bot
 
-// Import required pckages
 const path = require('path');
 const express = require('express');
 
-// Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
 const { BotFrameworkAdapter } = require('botbuilder');
 
-// Import bot definitions
 const { BotActivityHandler } = require('./botActivityHandler');
 
-// Read botFilePath and botFileSecret from .env file.
-const ENV_FILE = path.join(__dirname, '.env');
+const ENV_FILE = path.join(__dirname);
 require('dotenv').config({ path: ENV_FILE });
 
 // Create adapter.
