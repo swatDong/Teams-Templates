@@ -15,7 +15,7 @@ import { TeamsBot } from './bots/teamsBot';
 import { MainDialog } from './dialogs/mainDialog';
 
 // Read botFilePath and botFileSecret from .env file.
-const ENV_FILE = path.join(__dirname, '..', '.env');
+const ENV_FILE = path.join(__dirname);
 config({ path: ENV_FILE });
 
 // Create adapter.
