@@ -16,6 +16,7 @@ import { MainDialog } from './dialogs/mainDialog';
 
 // Read botFilePath and botFileSecret from .env file.
 const ENV_FILE = path.join(__dirname);
+// Demo0309
 config({ path: ENV_FILE });
 
 // Create adapter.
