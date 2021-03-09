@@ -14,5 +14,5 @@ else # botCsDefault
     cd ./bot/csharp
 fi
 
-zip ../../${RAW_TAG}.zip .
+zip -r ../../${RAW_TAG}.zip .
 cd ../..
