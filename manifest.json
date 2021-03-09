@@ -71,6 +71,10 @@
                 {
                     "version": "0.0.9+botTsDefault",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.9+botTsDefault/0.0.9+botTsDefault.zip"
+                },
+                {
+                    "version": "0.0.10+botTsDefault",
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.10+botTsDefault/0.0.10+botTsDefault.zip"
                 }
             ]
         },
