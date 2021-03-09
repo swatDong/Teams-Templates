@@ -59,7 +59,11 @@
                 {
                     "version": "0.0.6+bot",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.6+bot/bot_TypeScript_default_0.0.6+bot.zip"
-                }
+                },
+                {
+                    "version": "0.0.7+botTsDefault",
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.7+botTsDefault/0.0.7+botTsDefault.zip"
+                },
             ]
         },
         "CSharp": {
