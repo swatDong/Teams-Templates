@@ -55,6 +55,10 @@
                 {
                     "version": "0.0.7+bot.JavaScript.default",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.7+bot.JavaScript.default/0.0.7+bot.JavaScript.default.zip"
+                },
+                {
+                    "version": "0.0.8+bot.JavaScript.default",
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.8+bot.JavaScript.default/0.0.8+bot.JavaScript.default.zip"
                 }
             ]
         },
@@ -67,7 +71,7 @@
                 {
                     "version": "0.0.7+botTsDefault",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.7+botTsDefault/0.0.7+botTsDefault.zip"
-                },
+                }
             ]
         },
         "CSharp": {
