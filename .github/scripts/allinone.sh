@@ -6,9 +6,9 @@ RAW_TAG=$1
 
 # get folder path to zip.
 
-if [[ ${RAW_TAG} == *"botJsDefault"* ]];then
+if [[ ${RAW_TAG} == *"bot.JavaScript.default"* ]];then
     cd ./bot/js
-elif [[ ${RAW_TAG} == *"botTsDefault"* ]];then
+elif [[ ${RAW_TAG} == *"bot.TypeScript.default"* ]];then
     cd ./bot/ts
 else # botCsDefault
     cd ./bot/csharp
