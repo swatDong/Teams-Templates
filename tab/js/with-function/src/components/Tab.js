@@ -71,6 +71,9 @@ class Tab extends React.Component {
           }
         } else {
           funcErrorMsg = err.toString();
+          if (err.response?.data?.error) {
+            funcErrorMsg += ': ' + err.response.data.error;
+          }
         }
       }
       showFunctionMessage = true;
