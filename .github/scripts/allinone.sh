@@ -7,15 +7,19 @@ RAW_TAG=$1
 # get folder path to zip.
 if [[ ${RAW_TAG} == *"tab.JavaScript.default"* ]];then
     cd ./tab/js/default
+    zip -r ../../../${RAW_TAG}.zip .
 elif [[ ${RAW_TAG} == *"tab.JavaScript.with-function"* ]];then
     cd ./tab/js/with-function
+    zip -r ../../../${RAW_TAG}.zip .
 elif [[ ${RAW_TAG} == *"bot.JavaScript.default"* ]];then
     cd ./bot/js
+    zip -r ../../${RAW_TAG}.zip .
 elif [[ ${RAW_TAG} == *"bot.TypeScript.default"* ]];then
     cd ./bot/ts
+    zip -r ../../${RAW_TAG}.zip .
 else # botCsDefault
     cd ./bot/csharp
+    zip -r ../../${RAW_TAG}.zip .
 fi
 
-zip -r ../../${RAW_TAG}.zip .
 cd ../..
