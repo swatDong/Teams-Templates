@@ -39,12 +39,22 @@
         "JavaScript": {
             "default": [
                 {
+                    "version": "0.1.2+tab.JavaScript.default",
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.2+tab.JavaScript.default/0.1.2+tab.JavaScript.default.zip"
+                },
+                {
                     "version": "0.1.1+tab.JavaScript.default",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.1+tab.JavaScript.default/0.1.1+tab.JavaScript.default.zip"
                 },
                 {
                     "version": "0.1.0",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.2/tab_JavaScript_default_0.1.0.zip"
+                }
+            ],
+            "with-function": [
+                {
+                    "version": "0.1.2+tab.JavaScript.with-function",
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.2+tab.JavaScript.with-function/0.1.2+tab.JavaScript.with-function.zip"
                 }
             ]
         }
