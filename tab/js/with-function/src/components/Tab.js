@@ -3,7 +3,7 @@
 
 import React from 'react';
 import './App.css';
-import { MODS } from "mods-client";
+import { MODS } from 'mods-client';
 import { Button } from '@fluentui/react-northstar'
 
 /**
@@ -16,12 +16,12 @@ class Tab extends React.Component {
     this.state = {
       userInfo: {},
       profile: {},
-      photoObjectURL: "",
-      fetchPhotoErrorMessage: "",
+      photoObjectURL: '',
+      fetchPhotoErrorMessage: '',
       showLoginBtn: false,
       showGraphMessage: false,
-      functionMessage: "",
-      functionErrorMessage: "",
+      functionMessage: '',
+      functionErrorMessage: '',
       showFunctionMessage: false
     }
   }
@@ -48,26 +48,26 @@ class Tab extends React.Component {
   async callGraphSilent() {
     try {
       var graphClient = await MODS.getMicrosoftGraphClient();
-      var profile = await graphClient.api("/me").get();
+      var profile = await graphClient.api('/me').get();
 
-      var message = "";
-      var funcErrorMsg = "";
+      var message = '';
+      var funcErrorMsg = '';
       var showFunctionMessage = false;
 
       try {
-        var functionName = process.env.REACT_APP_FUNC_NAME || "myFunc";
-        var messageJson = await MODS.callFunction(functionName, "post", "hello");
+        var functionName = process.env.REACT_APP_FUNC_NAME || 'myFunc';
+        var messageJson = await MODS.callFunction(functionName, 'post', 'hello');
         message = JSON.stringify(messageJson, undefined, 2);
       } catch (err) {
-        if (err.response && err.response.status && err.response.status === '404') {
-          funcErrorMsg = "There may be a problem with the deployment of Azure Function App, please deploy Azure Function (Run command palette 'MODS - Deploy All (frontend and backend)') first before running this App";
-        } else if (err.message == "Network Error") {
-          funcErrorMsg = "Cannot call Azure Function due to network error, please check your network connection status and ";
-          if (err.config.url.indexOf("localhost") >= 0) {
-            funcErrorMsg += "make sure to start Azure Function locally (Run 'npm run start' command inside api folder from terminal) first before running this App";
+        if (err.response && err.response.status && err.response.status === 404) {
+          funcErrorMsg = 'There may be a problem with the deployment of Azure Function App, please deploy Azure Function (Run command palette "MODS - Deploy Package") first before running this App';
+        } else if (err.message === 'Network Error') {
+          funcErrorMsg = 'Cannot call Azure Function due to network error, please check your network connection status and ';
+          if (err.config.url.indexOf('localhost') >= 0) {
+            funcErrorMsg += 'make sure to start Azure Function locally (Run "npm run start" command inside api folder from terminal) first before running this App';
           }
           else {
-            funcErrorMsg += "make sure to provision and deploy Azure Function (Run command palette 'MODS - Create environment -> Azure' and 'MODS - Deploy All (frontend and backend)') first before running this App";
+            funcErrorMsg += 'make sure to provision and deploy Azure Function (Run command palette "MODS - Provision Resource" and "MODS - Deploy Package") first before running this App';
           }
         } else {
           funcErrorMsg = err.toString();
@@ -84,13 +84,13 @@ class Tab extends React.Component {
       })
 
       try {
-        var photoBlob = await graphClient.api("/me/photo/$value").get();
+        var photoBlob = await graphClient.api('/me/photo/$value').get();
         this.setState({
           photoObjectURL: URL.createObjectURL(photoBlob),
         });
       } catch (error) {
         this.setState({
-          fetchPhotoErrorMessage: "Could not fetch photo from your profile, you need to add photo in the profile settings first: " + error.message
+          fetchPhotoErrorMessage: 'Could not fetch photo from your profile, you need to add photo in the profile settings first: ' + error.message
         });
       }
     }
@@ -107,7 +107,7 @@ class Tab extends React.Component {
       await MODS.popupLoginPage();
     }
     catch (err) {
-      alert("Login failed: " + err);
+      alert('Login failed: ' + err);
       return;
     }
     this.setState({
@@ -123,7 +123,7 @@ class Tab extends React.Component {
         <p><b>Name:</b> {this.state.userInfo.userName}</p>
         <p><b>E-mail:</b> {this.state.userInfo.preferredUserName}</p>
 
-        {this.state.showLoginBtn && <Button content="Grant permission & get information" onClick={() => this.loginBtnClick()} primary />}
+        {this.state.showLoginBtn && <Button content='Grant permission & get information' onClick={() => this.loginBtnClick()} primary />}
 
         {
           this.state.showGraphMessage &&
@@ -138,7 +138,7 @@ class Tab extends React.Component {
             </div>
             <h2>User Photo from Microsoft Graph</h2>
             <div >
-              {this.state.photoObjectURL && <img src={this.state.photoObjectURL} alt="Profile Avatar" />}
+              {this.state.photoObjectURL && <img src={this.state.photoObjectURL} alt='Profile Avatar' />}
               {this.state.fetchPhotoErrorMessage && <div>{this.state.fetchPhotoErrorMessage}</div>}
             </div>
           </p>

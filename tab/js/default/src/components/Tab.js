@@ -3,7 +3,7 @@
 
 import React from 'react';
 import './App.css';
-import { MODS } from "mods-client";
+import { MODS } from 'mods-client';
 import { Button } from '@fluentui/react-northstar'
 
 /**
@@ -16,8 +16,8 @@ class Tab extends React.Component {
     this.state = {
       userInfo: {},
       profile: {},
-      photoObjectURL: "",
-      fetchPhotoErrorMessage: "",
+      photoObjectURL: '',
+      fetchPhotoErrorMessage: '',
       showLoginBtn: false,
       showGraphMessage: false,
     }
@@ -44,7 +44,7 @@ class Tab extends React.Component {
   async callGraphSilent() {
     try {
       var graphClient = await MODS.getMicrosoftGraphClient();
-      var profile = await graphClient.api("/me").get();
+      var profile = await graphClient.api('/me').get();
 
       this.setState({
         profile: profile,
@@ -52,13 +52,13 @@ class Tab extends React.Component {
       })
 
       try {
-        var photoBlob = await graphClient.api("/me/photo/$value").get();
+        var photoBlob = await graphClient.api('/me/photo/$value').get();
         this.setState({
           photoObjectURL: URL.createObjectURL(photoBlob),
         });
       } catch (error) {
         this.setState({
-          fetchPhotoErrorMessage: "Could not fetch photo from your profile, you need to add photo in the profile settings first: " + error.message
+          fetchPhotoErrorMessage: 'Could not fetch photo from your profile, you need to add photo in the profile settings first: ' + error.message
         });
       }
     }
@@ -75,7 +75,7 @@ class Tab extends React.Component {
       await MODS.popupLoginPage();
     }
     catch (err) {
-      alert("Login failed: " + err);
+      alert('Login failed: ' + err);
       return;
     }
     this.setState({
@@ -91,7 +91,7 @@ class Tab extends React.Component {
         <p><b>Name:</b> {this.state.userInfo.userName}</p>
         <p><b>E-mail:</b> {this.state.userInfo.preferredUserName}</p>
 
-        {this.state.showLoginBtn && <Button content="Grant permission & get information" onClick={() => this.loginBtnClick()} primary />}
+        {this.state.showLoginBtn && <Button content='Grant permission & get information' onClick={() => this.loginBtnClick()} primary />}
 
         {
           this.state.showGraphMessage &&
@@ -106,7 +106,7 @@ class Tab extends React.Component {
             </div>
             <h2>User Photo from Microsoft Graph</h2>
             <div >
-              {this.state.photoObjectURL && <img src={this.state.photoObjectURL} alt="Profile Avatar" />}
+              {this.state.photoObjectURL && <img src={this.state.photoObjectURL} alt='Profile Avatar' />}
               {this.state.fetchPhotoErrorMessage && <div>{this.state.fetchPhotoErrorMessage}</div>}
             </div>
           </p>
