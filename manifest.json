@@ -8,7 +8,7 @@
                 },
                 {
                     "version": "0.1.1",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.4+function.JavaScript/0.1.1+function-base.JavaScript.default.zip"
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.4+function-base.JavaScript.default/0.1.4+function-base.JavaScript.default.zip"
                 }
             ]
         },
@@ -30,7 +30,7 @@
                 },
                 {
                     "version": "0.1.1",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.4+function.JavaScript/0.1.1+function-triggers.JavaScript.HTTPTrigger.zip"
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.5+function-triggers.JavaScript.HTTPTrigger/0.1.5+function-triggers.JavaScript.HTTPTrigger.zip"
                 }
             ]
         },
