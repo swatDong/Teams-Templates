@@ -9,6 +9,10 @@
                 {
                     "version": "0.1.1",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.4+function-base.JavaScript.default/0.1.4+function-base.JavaScript.default.zip"
+                },
+                {
+                    "version": "0.1.2",
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.6+function-base.JavaScript.default/0.1.6+function-base.JavaScript.default.zip"
                 }
             ]
         },
