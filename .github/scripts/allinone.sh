@@ -15,7 +15,7 @@ elif [[ ${RAW_TAG} == *"function-base.JavaScript.default"* ]];then
     cd ./function-base/js/default
     zip -r ../../../${RAW_TAG}.zip .
 elif [[ ${RAW_TAG} == *"function-triggers.JavaScript.HTTPTrigger"* ]];then
-    cd ./function-trigger/js/HTTPTrigger
+    cd ./function-triggers/js/HTTPTrigger
     zip -r ../../../${RAW_TAG}.zip .
 elif [[ ${RAW_TAG} == *"bot.JavaScript.default"* ]];then
     cd ./bot/js
