@@ -5,6 +5,10 @@
                 {
                     "version": "0.1.0",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.1/function-base_JavaScript_default_0.1.0.zip"
+                },
+                {
+                    "version": "0.1.1",
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.4+function.JavaScript/0.1.1+function-base.JavaScript.default.zip"
                 }
             ]
         },
@@ -23,6 +27,10 @@
                 {
                     "version": "0.1.0",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.1/function-triggers_JavaScript_HTTPTrigger_0.1.0.zip"
+                },
+                {
+                    "version": "0.1.1",
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.4+function.JavaScript/0.1.1+function-triggers.JavaScript.HTTPTrigger.zip"
                 }
             ]
         },
