@@ -31,10 +31,10 @@ elif [[ ${RAW_TAG} == *"msgext.JavaScript.default"* ]];then
     zip -r ../../${RAW_TAG}.zip .
 elif [[ ${RAW_TAG} == *"msgext.TypeScript.default"* ]];then
     cd ./msgext/ts
-    zip -r ../../${RAW_TAG}.zip 
+    zip -r ../../${RAW_TAG}.zip .
 elif [[ ${RAW_TAG} == *"bot-msgext.JavaScript.default"* ]];then
     cd ./bot-msgext/js
-    zip -r ../../${RAW_TAG}.zip 
+    zip -r ../../${RAW_TAG}.zip .
 elif [[ ${RAW_TAG} == *"bot-msgext.TypeScript.default"* ]];then
     cd ./bot-msgext/ts
     zip -r ../../${RAW_TAG}.zip 
