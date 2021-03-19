@@ -26,17 +26,17 @@ elif [[ ${RAW_TAG} == *"bot.JavaScript.default"* ]];then
 elif [[ ${RAW_TAG} == *"bot.TypeScript.default"* ]];then
     cd ./bot/ts
     zip -r ../../${RAW_TAG}.zip .
-elif [[ ${RAW_TAG} == *"msgext.JavaScript.default"* ]];then
-    cd ./msgext/js
-    zip -r ../../${RAW_TAG}.zip .
-elif [[ ${RAW_TAG} == *"msgext.TypeScript.default"* ]];then
-    cd ./msgext/ts
-    zip -r ../../${RAW_TAG}.zip .
 elif [[ ${RAW_TAG} == *"bot-msgext.JavaScript.default"* ]];then
     cd ./bot-msgext/js
     zip -r ../../${RAW_TAG}.zip .
 elif [[ ${RAW_TAG} == *"bot-msgext.TypeScript.default"* ]];then
     cd ./bot-msgext/ts
+    zip -r ../../${RAW_TAG}.zip .
+elif [[ ${RAW_TAG} == *"msgext.JavaScript.default"* ]];then
+    cd ./msgext/js
+    zip -r ../../${RAW_TAG}.zip .
+elif [[ ${RAW_TAG} == *"msgext.TypeScript.default"* ]];then
+    cd ./msgext/ts
     zip -r ../../${RAW_TAG}.zip .
 else 
     echo "Unknown tag ${RAW_TAG}"
