@@ -69,8 +69,8 @@ server.post('/api/messages', (req, res) => {
 server.on('upgrade', (req, socket, head) => {
     // Create an adapter scoped to this WebSocket connection to allow storing session data.
     const streamingAdapter = new BotFrameworkAdapter({
-        appId: process.env.MicrosoftAppId,
-        appPassword: process.env.MicrosoftAppPassword
+        appId: process.env.BotId,
+        appPassword: process.env.BotPassword
     });
     // Set onTurnError for the BotFrameworkAdapter created for each connection.
     streamingAdapter.onTurnError = onTurnErrorHandler;
