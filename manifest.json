@@ -135,6 +135,10 @@
                 {
                     "version": "0.0.1+msgext.TypeScript.default",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.1+msgext.TypeScript.default/0.0.1+msgext.TypeScript.default.zip"
+                },
+                {
+                    "version": "0.0.2+msgext.TypeScript.default",
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.2+msgext.TypeScript.default/0.0.2+msgext.TypeScript.default.zip"
                 }
             ]
         }
