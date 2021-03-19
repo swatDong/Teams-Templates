@@ -37,7 +37,7 @@ elif [[ ${RAW_TAG} == *"bot-msgext.JavaScript.default"* ]];then
     zip -r ../../${RAW_TAG}.zip .
 elif [[ ${RAW_TAG} == *"bot-msgext.TypeScript.default"* ]];then
     cd ./bot-msgext/ts
-    zip -r ../../${RAW_TAG}.zip 
+    zip -r ../../${RAW_TAG}.zip .
 else 
     echo "Unknown tag ${RAW_TAG}"
 fi
