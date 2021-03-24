@@ -1,2 +1,2 @@
-# MODS-Templates
-Templates for scaffold used in MODS projects
+# Teams-Templates
+Templates of Teams projects
