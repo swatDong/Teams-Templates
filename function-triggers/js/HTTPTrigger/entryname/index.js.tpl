@@ -13,14 +13,11 @@ const ModsServerSdk = require('mods-server');
  *
  * This function initializes the MODS Server SDK with the configuration and calls these APIs:
  * - getUserInfo() - Get the user's information from the received SSO token.
- * - getSqlConnection() - Establish a connection to the SQL Server,
- * according to the SQL endpoint configured in the function app settings.
  * - getMicrosoftGraphClientWithUserIdentity() - Get a graph client to access user's Microsoft 365 data.
  *
  * The response contains multiple message blocks constructed into a JSON object, including:
  * - An echo of the request body.
  * - The display name encoded in the SSO token.
- * - Information about SQL connection creation if SQL is enabled.
  * - Current user's Microsoft 365 profile if the user has consented.
  *
  * @param {Context} context - The Azure Functions context object.
