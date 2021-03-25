@@ -11,8 +11,7 @@ const { BotFrameworkAdapter } = require('botbuilder');
 
 const { BotActivityHandler } = require('./botActivityHandler');
 
-const ENV_FILE = path.join(__dirname);
-require('dotenv').config({ path: ENV_FILE });
+require('dotenv').config();
 
 // Create adapter.
 // See https://aka.ms/about-bot-adapter to learn more about adapters.
