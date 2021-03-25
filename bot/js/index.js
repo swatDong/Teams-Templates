@@ -11,7 +11,7 @@ const { BotFrameworkAdapter } = require('botbuilder');
 
 const { BotActivityHandler } = require('./botActivityHandler');
 
-const ENV_FILE = path.join(__dirname);
+const ENV_FILE = path.join(__dirname, '.env');
 require('dotenv').config({ path: ENV_FILE });
 
 // Create adapter.
