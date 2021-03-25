@@ -19,6 +19,12 @@ elif [[ ${RAW_TAG} == *"function-base.JavaScript.default"* ]];then
 elif [[ ${RAW_TAG} == *"function-triggers.JavaScript.HTTPTrigger"* ]];then
     cd ./function-triggers/js/HTTPTrigger
     zip -r ../../../${RAW_TAG}.zip .
+elif [[ ${RAW_TAG} == *"function-base.TypeScript.default"* ]];then
+    cd ./function-base/ts/default
+    zip -r ../../../${RAW_TAG}.zip .
+elif [[ ${RAW_TAG} == *"function-triggers.TypeScript.HTTPTrigger"* ]];then
+    cd ./function-triggers/ts/HTTPTrigger
+    zip -r ../../../${RAW_TAG}.zip .
 # bot
 elif [[ ${RAW_TAG} == *"bot.JavaScript.default"* ]];then
     cd ./bot/js
