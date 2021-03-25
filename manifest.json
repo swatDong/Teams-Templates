@@ -147,6 +147,10 @@
                 {
                     "version": "0.0.4+msgext.JavaScript.default",
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.4+msgext.JavaScript.default/0.0.4+msgext.JavaScript.default.zip"
+                },
+                {
+                    "version": "0.0.5+msgext.JavaScript.default",
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.5+msgext.JavaScript.default/0.0.5+msgext.JavaScript.default.zip"
                 }
             ]
         },
