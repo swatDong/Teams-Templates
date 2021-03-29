@@ -15,7 +15,7 @@ By default, teamsfx will provide template code for you to get started. The start
 
 ## Trigger Function
 
-- Invoking teamsfx Client SDK API `callFunction()` from Tabs.
+- Invoking teamsfx client SDK API `callFunction()` from Tabs.
 - Sending an HTTP request to the service. However, teamsfx binding always checks the SSO token of
   received HTTP request before function handles the request. Thus, requests without a valid SSO token would cause function responses HTTP error 500.
 
