@@ -7,7 +7,7 @@
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
-    "mods-server": "github:OfficeDev/mods-server-sdk-private-preview"
+    "teamsdev-server": "^0.1.0"
   },
   "devDependencies": {}
 }

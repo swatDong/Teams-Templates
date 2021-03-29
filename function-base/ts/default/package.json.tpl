@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@azure/functions": "^1.2.2",
-    "mods-server": "github:OfficeDev/mods-server-sdk-private-preview"
+    "teamsdev-server": "^0.1.0"
   },
   "devDependencies": {
     "typescript": "^3.3.3"
