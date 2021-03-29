@@ -11,7 +11,7 @@ To start enjoying full functionalities to develop an API with Azure Functions fo
 
 ## Develop
 
-By default, teamsfx will provide template code for you to get started. The starter code handles calls from your Teams App client side, initializes the teamsfx server SDK to access current connected user information and prepares a pre-authenticated Microsoft Graph Client for you to access more user's data. You can modify the template code with your custom logics or add more functions with `HTTPTrigger` by running command `MODSV2 - Add Resource` and select `New APIs from Azure Functions`. Read on [Azure Functions developer guide](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference) for more development resources.
+By default, teamsfx will provide template code for you to get started. The starter code handles calls from your Teams App client side, initializes the teamsfx server SDK to access current connected user information and prepares a pre-authenticated Microsoft Graph Client for you to access more user's data. You can modify the template code with your custom logics or add more functions with `HTTPTrigger` by running command `TeamsFx - Add Resource` and select `function`. Read on [Azure Functions developer guide](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference) for more development resources.
 
 ## Trigger Function
 
@@ -21,8 +21,8 @@ By default, teamsfx will provide template code for you to get started. The start
 
 ## Deploy to Azure
 
-- Provision Azure environment by running command `MODSV2 - Provision Resource`.
-- Deploy your project to the Azure function app by running command - `MODSV2 - Deploy Package` and select `Azure Function`.
+- Provision Azure environment by running command `TeamsFx - Provision Resource`.
+- Deploy your project to the Azure function app by running command - `TeamsFx - Deploy Package` and select `Azure Function`.
 
 ## Node version
 The runtime versions supported by Azure Functions are list [here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions). By default, teamsfx toolkit provisions an Azure function app with function runtime version 3, and node runtime version 12. You can change the node version through Azure Portal.
