@@ -26,19 +26,18 @@ export class MainDialog extends LogoutDialog {
   constructor() {
     super(MAIN_DIALOG, process.env.connectionName);
     loadConfiguration();
-    // this.addDialog(
-    //   new TeamsBotSsoPrompt(TEAMS_SSO_PROMPT_ID, {
-    //     scopes: this.requiredScopes,
-    //     endOnInvalidMessage: true
-    //   })
-    // );
+    this.addDialog(
+      new TeamsBotSsoPrompt(TEAMS_SSO_PROMPT_ID, {
+        scopes: this.requiredScopes,
+        endOnInvalidMessage: true
+      })
+    );
 
     //this.addDialog(new ConfirmPrompt(CONFIRM_PROMPT));
     this.addDialog(
       new WaterfallDialog(MAIN_WATERFALL_DIALOG, [
-        // this.promptStep.bind(this),
-        // this.callApi.bind(this)
-        this.testBot.bind(this)
+        this.promptStep.bind(this),
+        this.callApi.bind(this)
       ])
     );
 
@@ -88,11 +87,9 @@ export class MainDialog extends LogoutDialog {
         await stepContext.context.sendActivity(`You're logged in as ${me.displayName} (${me.userPrincipalName}); your job title is: ${me.jobTitle}; your photo is: `);
 
         // show user picture
-        var photoBuffer = await graphClient.api("/me/photo/$value").get();
+        //var photoBuffer = await graphClient.api("/me/photo/$value").get();
         //const photoBuffer = await photoResponse.arrayBuffer();
         //const imageUri = 'data:image/png;base64,' + photoData.toString('base64');
-        console.log(Object.prototype.toString.call(photoBuffer));
-        console.log(Object.keys(photoBuffer));
         //const card = CardFactory.thumbnailCard("", CardFactory.images([imageUri]));
         //await stepContext.context.sendActivity({ attachments: [card] });
       }

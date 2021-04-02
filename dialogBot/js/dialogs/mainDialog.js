@@ -73,11 +73,11 @@ class MainDialog extends LogoutDialog {
             const graphClient = createMicrosoftGraphClient(oboCredential, ["User.Read"]);
             const me = await graphClient.api("/me").get();
             if (me) {
-                await stepContext.context.sendActivity(`You're logged in as ${me.displayName} (${me.userPrincipalName}); your job title is: ${me.jobTitle}; your photo is: `);
+                await stepContext.context.sendActivity(`You're logged in as ${me.displayName} (${me.userPrincipalName}); your job title is: ${me.jobTitle}.`);
 
                 // show user picture
-                //var photoResponse = await graphClient.api("/me/photo/$value").get();
-                // const photoBuffer = await photoResponse.arrayBuffer();
+                //var photoBuffer = await graphClient.api("/me/photo/$value").get();
+                // const photoBuffer =await photoResponse.arrayBuffer();
                 // const photoData = photoResponse.data;
                 // const imageUri = 'data:image/png;base64,' + photoData.toString('base64');
                 //const card = CardFactory.thumbnailCard("", CardFactory.images([imageUri]));
