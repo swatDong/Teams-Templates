@@ -3,7 +3,7 @@
 
 import React from 'react';
 import './App.css';
-import { MODS } from 'mods-client';
+import { teamsfx } from 'teamsdev-client';
 import { Button } from '@fluentui/react-northstar'
 
 /**
@@ -27,15 +27,15 @@ class Tab extends React.Component {
   //Learn more: https://reactjs.org/docs/react-component.html#componentdidmount
   async componentDidMount() {
     // Next steps: Error handling using the error object
-    await this.initMODS();
+    await this.initTeamsFx();
     await this.callGraphSilent();
   }
 
-  async initMODS() {
-    var modsEndpoint = process.env.REACT_APP_MODS_ENDPOINT;
+  async initTeamsFx() {
+    var teamsfxEndpoint = process.env.REACT_APP_TEAMSFX_ENDPOINT;
     var startLoginPageUrl = process.env.REACT_APP_START_LOGIN_PAGE_URL;
-    await MODS.init(modsEndpoint, startLoginPageUrl);
-    var userInfo = MODS.getUserInfo();
+    await teamsfx.init(teamsfxEndpoint, startLoginPageUrl);
+    var userInfo = teamsfx.getUserInfo();
     this.setState({
       userInfo: userInfo
     });
@@ -43,7 +43,7 @@ class Tab extends React.Component {
 
   async callGraphSilent() {
     try {
-      var graphClient = await MODS.getMicrosoftGraphClient();
+      var graphClient = await teamsfx.getMicrosoftGraphClient();
       var profile = await graphClient.api('/me').get();
 
       this.setState({
@@ -72,7 +72,7 @@ class Tab extends React.Component {
 
   async loginBtnClick() {
     try {
-      await MODS.popupLoginPage();
+      await teamsfx.popupLoginPage();
     }
     catch (err) {
       alert('Login failed: ' + err);

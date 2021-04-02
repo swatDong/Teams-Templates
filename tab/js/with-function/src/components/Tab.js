@@ -3,7 +3,7 @@
 
 import React from 'react';
 import './App.css';
-import { MODS } from 'mods-client';
+import { teamsfx } from 'teamsdev-client';
 import { Button } from '@fluentui/react-northstar'
 
 /**
@@ -30,16 +30,16 @@ class Tab extends React.Component {
   //Learn more: https://reactjs.org/docs/react-component.html#componentdidmount
   async componentDidMount() {
     // Next steps: Error handling using the error object
-    await this.initMODS();
+    await this.initTeamsFx();
     await this.callGraphSilent();
   }
 
-  async initMODS() {
-    var modsEndpoint = process.env.REACT_APP_MODS_ENDPOINT;
+  async initTeamsFx() {
+    var teamsfxEndpoint = process.env.REACT_APP_TEAMSFX_ENDPOINT;
     var startLoginPageUrl = process.env.REACT_APP_START_LOGIN_PAGE_URL;
     var functionEndpoint = process.env.REACT_APP_FUNC_ENDPOINT;
-    await MODS.init(modsEndpoint, startLoginPageUrl, functionEndpoint);
-    var userInfo = MODS.getUserInfo();
+    await teamsfx.init(teamsfxEndpoint, startLoginPageUrl, functionEndpoint);
+    var userInfo = teamsfx.getUserInfo();
     this.setState({
       userInfo: userInfo
     });
@@ -47,7 +47,7 @@ class Tab extends React.Component {
 
   async callGraphSilent() {
     try {
-      var graphClient = await MODS.getMicrosoftGraphClient();
+      var graphClient = await teamsfx.getMicrosoftGraphClient();
       var profile = await graphClient.api('/me').get();
 
       var message = '';
@@ -56,18 +56,18 @@ class Tab extends React.Component {
 
       try {
         var functionName = process.env.REACT_APP_FUNC_NAME || 'myFunc';
-        var messageJson = await MODS.callFunction(functionName, 'post', 'hello');
+        var messageJson = await teamsfx.callFunction(functionName, 'post', 'hello');
         message = JSON.stringify(messageJson, undefined, 2);
       } catch (err) {
         if (err.response && err.response.status && err.response.status === 404) {
-          funcErrorMsg = 'There may be a problem with the deployment of Azure Function App, please deploy Azure Function (Run command palette "MODS - Deploy Package") first before running this App';
+          funcErrorMsg = 'There may be a problem with the deployment of Azure Function App, please deploy Azure Function (Run command palette "TeamsFx - Deploy Package") first before running this App';
         } else if (err.message === 'Network Error') {
           funcErrorMsg = 'Cannot call Azure Function due to network error, please check your network connection status and ';
           if (err.config.url.indexOf('localhost') >= 0) {
             funcErrorMsg += 'make sure to start Azure Function locally (Run "npm run start" command inside api folder from terminal) first before running this App';
           }
           else {
-            funcErrorMsg += 'make sure to provision and deploy Azure Function (Run command palette "MODS - Provision Resource" and "MODS - Deploy Package") first before running this App';
+            funcErrorMsg += 'make sure to provision and deploy Azure Function (Run command palette "TeamsFx - Provision Resource" and "TeamsFx - Deploy Package") first before running this App';
           }
         } else {
           funcErrorMsg = err.toString();
@@ -107,7 +107,7 @@ class Tab extends React.Component {
 
   async loginBtnClick() {
     try {
-      await MODS.popupLoginPage();
+      await teamsfx.popupLoginPage();
     }
     catch (err) {
       alert('Login failed: ' + err);
