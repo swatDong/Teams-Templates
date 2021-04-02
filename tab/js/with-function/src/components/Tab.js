@@ -35,7 +35,7 @@ class Tab extends React.Component {
   }
 
   async initTeamsFx() {
-    var teamsfxEndpoint = process.env.REACT_APP_TEAMSFX_ENDPOINT;
+    var teamsfxEndpoint = process.env.REACT_APP_MODS_ENDPOINT;
     var startLoginPageUrl = process.env.REACT_APP_START_LOGIN_PAGE_URL;
     var functionEndpoint = process.env.REACT_APP_FUNC_ENDPOINT;
     await teamsfx.init(teamsfxEndpoint, startLoginPageUrl, functionEndpoint);
@@ -60,14 +60,14 @@ class Tab extends React.Component {
         message = JSON.stringify(messageJson, undefined, 2);
       } catch (err) {
         if (err.response && err.response.status && err.response.status === 404) {
-          funcErrorMsg = 'There may be a problem with the deployment of Azure Function App, please deploy Azure Function (Run command palette "TeamsFx - Deploy Package") first before running this App';
+          funcErrorMsg = 'There may be a problem with the deployment of Azure Function App, please deploy Azure Function (Run command palette "MODS - Deploy Package") first before running this App';
         } else if (err.message === 'Network Error') {
           funcErrorMsg = 'Cannot call Azure Function due to network error, please check your network connection status and ';
           if (err.config.url.indexOf('localhost') >= 0) {
             funcErrorMsg += 'make sure to start Azure Function locally (Run "npm run start" command inside api folder from terminal) first before running this App';
           }
           else {
-            funcErrorMsg += 'make sure to provision and deploy Azure Function (Run command palette "TeamsFx - Provision Resource" and "TeamsFx - Deploy Package") first before running this App';
+            funcErrorMsg += 'make sure to provision and deploy Azure Function (Run command palette "MODS - Provision Resource" and "MODS - Deploy Package") first before running this App';
           }
         } else {
           funcErrorMsg = err.toString();
