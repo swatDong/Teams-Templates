@@ -88,12 +88,13 @@ export class MainDialog extends LogoutDialog {
         await stepContext.context.sendActivity(`You're logged in as ${me.displayName} (${me.userPrincipalName}); your job title is: ${me.jobTitle}; your photo is: `);
 
         // show user picture
-        //var photoResponse = await graphClient.api("/me/photo/$value").get();
-        // const photoBuffer = await photoResponse.arrayBuffer();
-        // const photoData = photoResponse.data;
-        // const imageUri = 'data:image/png;base64,' + photoData.toString('base64');
+        var photoBuffer = await graphClient.api("/me/photo/$value").get();
+        //const photoBuffer = await photoResponse.arrayBuffer();
+        //const imageUri = 'data:image/png;base64,' + photoData.toString('base64');
+        console.log(Object.prototype.toString.call(photoBuffer));
+        console.log(Object.keys(photoBuffer));
         //const card = CardFactory.thumbnailCard("", CardFactory.images([imageUri]));
-        // await stepContext.context.sendActivity({ attachments: [card] });
+        //await stepContext.context.sendActivity({ attachments: [card] });
       }
       else {
         await stepContext.context.sendActivity("Getting profile from Microsoft Graph failed! ");

@@ -2,7 +2,7 @@
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.5/MicrosoftTeams.schema.json",
     "manifestVersion": "1.5",
     "version": "1.0.0",
-    "id": "53f3017f-0ccb-4a6e-a64d-4a21541d89c9",
+    "id": "<MicrosoftAppId>",
     "packageName": "com.microsoft.teams.samples",
     "developer": {
       "name": "Microsoft",
@@ -25,7 +25,7 @@
     "accentColor": "#FFFFFF",
     "bots": [
       {
-        "botId": "53f3017f-0ccb-4a6e-a64d-4a21541d89c9",
+        "botId": "<MicrosoftAppId>",
         "scopes": ["personal"],
         "supportsFiles": false,
         "isNotificationOnly": false
@@ -34,8 +34,8 @@
     "permissions": ["identity", "messageTeamMembers"],
     "validDomains": ["token.botframework.com", "*.ngrok.io"],
     "webApplicationInfo": {
-      "id": "435a7138-fa19-4dfa-9fdd-26dfde6a020b",
-      "resource": "api://botid-53f3017f-0ccb-4a6e-a64d-4a21541d89c9"
+      "id": "<M365_CLIENT_ID>",
+      "resource": "api://botid-<MicrosoftAppId>"
     }
   }
   
