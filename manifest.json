@@ -67,6 +67,10 @@
                 {
                     "version": "0.1.6",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.6+function-triggers.TypeScript.HTTPTrigger/0.1.6+function-triggers.TypeScript.HTTPTrigger.zip"
+                },
+                {
+                    "version": "0.1.7",
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.7+function-triggers.TypeScript.HTTPTrigger/0.1.7+function-triggers.TypeScript.HTTPTrigger.zip"
                 }
             ]
         },
