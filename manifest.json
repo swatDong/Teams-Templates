@@ -187,6 +187,10 @@
                 {
                     "version": "0.0.2+msgext.JavaScript.default",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.2+msgext.JavaScript.default/0.0.2+msgext.JavaScript.default.zip"
+                },
+                {
+                    "version": "0.0.6+msgext.JavaScript.default",
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.6+msgext.JavaScript.default/0.0.6+msgext.JavaScript.default.zip"
                 }
             ]
         },
