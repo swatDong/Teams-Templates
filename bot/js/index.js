@@ -3,7 +3,6 @@
 
 // index.js is used to setup and configure your bot
 
-const path = require('path');
 const express = require('express');
 
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
@@ -11,14 +10,11 @@ const { BotFrameworkAdapter } = require('botbuilder');
 
 const { BotActivityHandler } = require('./botActivityHandler');
 
-const ENV_FILE = path.join(__dirname);
-require('dotenv').config({ path: ENV_FILE });
-
 // Create adapter.
 // See https://aka.ms/about-bot-adapter to learn more about adapters.
 const adapter = new BotFrameworkAdapter({
-    appId: process.env.BotId,
-    appPassword: process.env.BotPassword
+    appId: process.env.BOT_ID,
+    appPassword: process.env.BOT_PASSWORD
 });
 
 adapter.onTurnError = async (context, error) => {

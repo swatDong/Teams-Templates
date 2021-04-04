@@ -13,19 +13,7 @@ This bot has been created using [Bot Framework](https://dev.botframework.com), i
     node --version
     ```
 
-## To try this sample
-
-- Clone the repository
-
-    ```bash
-    git clone https://github.com/microsoft/botbuilder-samples.git
-    ```
-
-- In a console, navigate to `samples/typescript_nodejs/02.echo-bot`
-
-    ```bash
-    cd samples/typescript_nodejs/02.echo-bot
-    ```
+## Build and run
 
 - Install modules
 
@@ -38,22 +26,6 @@ This bot has been created using [Bot Framework](https://dev.botframework.com), i
     ```bash
     npm start
     ```
-
-## Testing the bot using Bot Framework Emulator
-
-[Bot Framework Emulator](https://github.com/microsoft/botframework-emulator) is a desktop application that allows bot developers to test and debug their bots on localhost or running remotely through a tunnel.
-
-- Install the Bot Framework Emulator version 4.3.0 or greater from [here](https://github.com/Microsoft/BotFramework-Emulator/releases)
-
-### Connect to the bot using Bot Framework Emulator
-
-- Launch Bot Framework Emulator
-- File -> Open Bot
-- Enter a Bot URL of `http://localhost:3978/api/messages`
-
-## Deploy the bot to Azure
-
-To learn more about deploying a bot to Azure, see [Deploy your bot to Azure](https://aka.ms/azuredeployment) for a complete list of deployment instructions.
 
 ## Further reading
 
@@ -68,4 +40,3 @@ To learn more about deploying a bot to Azure, see [Deploy your bot to Azure](htt
 - [Channels and Bot Connector Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-concepts?view=azure-bot-service-4.0)
 - [TypeScript](https://www.typescriptlang.org)
 - [Restify](https://www.npmjs.com/package/restify)
-- [dotenv](https://www.npmjs.com/package/dotenv)
