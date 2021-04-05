@@ -7,6 +7,7 @@ const { TeamsActivityHandler, CardFactory, TeamsInfo } = require('botbuilder');
 
 class BotActivityHandler extends TeamsActivityHandler {
 
+    // Action.
     handleTeamsMessagingExtensionSubmitAction(context, action) {
         switch (action.commandId) {
             case 'createCard':
@@ -20,8 +21,8 @@ class BotActivityHandler extends TeamsActivityHandler {
 
     async handleTeamsMessagingExtensionFetchTask(context, action) {
         try {
-           const member = await this.getSingleMember(context);
-           return {
+            const member = await this.getSingleMember(context);
+            return {
                 task: {
                     type: 'continue',
                     value: {
@@ -48,57 +49,28 @@ class BotActivityHandler extends TeamsActivityHandler {
             }
             throw e;
         }
-       
+
     }
     async getSingleMember(context) {
         try {
-           const member = await TeamsInfo.getMember(
+            const member = await TeamsInfo.getMember(
                 context,
                 context.activity.from.id
             );
-           return member.name;
+            return member.name;
         } catch (e) {
             if (e.code === 'MemberNotFoundInConversation') {
                 context.sendActivity(MessageFactory.text('Member not found.'));
                 return e.code;
-            } 
-            throw e;        
-        }   
-    }
-
-    async handleTeamsMessagingExtensionQuery(context, query) {
-        const searchQuery = query.parameters[0].value;
-        const response = await axios.get(`http://registry.npmjs.com/-/v1/search?${ querystring.stringify({ text: searchQuery, size: 8 }) }`);
-
-        const attachments = [];
-        response.data.objects.forEach(obj => {
-            const heroCard = CardFactory.heroCard(obj.package.name);
-            const preview = CardFactory.heroCard(obj.package.name);
-            preview.content.tap = { type: 'invoke', value: { description: obj.package.description } };
-            const attachment = { ...heroCard, preview };
-            attachments.push(attachment);
-        });
-
-        return {
-            composeExtension: {
-                type: 'result',
-                attachmentLayout: 'list',
-                attachments: attachments
             }
-        };
+            throw e;
+        }
     }
 
-    async handleTeamsMessagingExtensionSelectItem(context, obj) {
-        return {
-            composeExtension: {
-                type: 'result',
-                attachmentLayout: 'list',
-                attachments: [CardFactory.thumbnailCard(obj.description)]
-            }
-        };
-    }
 
-        // This handler is used for the processing of "composeExtension/queryLink" activities from Teams.
+    // Search and Link Unfurling.
+
+    // This handler is used for the processing of "composeExtension/queryLink" activities from Teams.
     // https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/messaging-extensions/search-extensions#receive-requests-from-links-inserted-into-the-compose-message-box
     // By specifying domains under the messageHandlers section in the manifest, the bot can receive
     // events when a user enters in a domain in the compose box.
@@ -128,18 +100,18 @@ class BotActivityHandler extends TeamsActivityHandler {
         const attachment = { ...heroCard, heroCard };
 
         switch (query.commandId) {
-        case 'searchQuery':
-            return {
-                composeExtension: {
-                    type: 'result',
-                    attachmentLayout: 'list',
-                    attachments: [
-                        attachment
-                    ]
-                }
-            };
-        default:
-            throw new Error('NotImplemented');
+            case 'searchQuery':
+                return {
+                    composeExtension: {
+                        type: 'result',
+                        attachmentLayout: 'list',
+                        attachments: [
+                            attachment
+                        ]
+                    }
+                };
+            default:
+                throw new Error('NotImplemented');
         }
     }
 }
