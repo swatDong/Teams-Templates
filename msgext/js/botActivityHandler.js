@@ -51,6 +51,7 @@ class BotActivityHandler extends TeamsActivityHandler {
         }
 
     }
+
     async getSingleMember(context) {
         try {
             const member = await TeamsInfo.getMember(
@@ -67,7 +68,6 @@ class BotActivityHandler extends TeamsActivityHandler {
         }
     }
 
-    // Search.
     async handleTeamsMessagingExtensionQuery(context, query) {
         const searchQuery = query.parameters[0].value;
         const response = await axios.get(`http://registry.npmjs.com/-/v1/search?${querystring.stringify({ text: searchQuery, size: 8 })}`);
@@ -100,9 +100,14 @@ class BotActivityHandler extends TeamsActivityHandler {
         };
     }
 
-    // Link Unfurling.
+    // Search and Link Unfurling.
+
+    // This handler is used for the processing of "composeExtension/queryLink" activities from Teams.
+    // https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/messaging-extensions/search-extensions#receive-requests-from-links-inserted-into-the-compose-message-box
+    // By specifying domains under the messageHandlers section in the manifest, the bot can receive
+    // events when a user enters in a domain in the compose box.
     handleTeamsAppBasedLinkQuery(context, query) {
-        const attachment = CardFactory.thumbnailCard('Image Preview Card',
+        const attachment = CardFactory.thumbnailCard('Thumbnail Card',
             query.url,
             [query.url]);
 
@@ -142,7 +147,10 @@ function createCardCommand(context, action) {
 function shareMessageCommand(context, action) {
     // The user has chosen to share a message by choosing the 'Share Message' context menu command.
     let userName = 'unknown';
-    if (action.messagePayload?.from?.user?.displayName) {
+    if (action.messagePayload &&
+        action.messagePayload.from &&
+        action.messagePayload.from.user &&
+        action.messagePayload.from.user.displayName) {
         userName = action.messagePayload.from.user.displayName;
     }
 
@@ -161,7 +169,9 @@ function shareMessageCommand(context, action) {
         images
     );
 
-    if (action.messagePayload.attachments?.length > 0) {
+    if (action.messagePayload &&
+        action.messagePayload.attachment &&
+        action.messagePayload.attachments.length > 0) {
         // This sample does not add the MessagePayload Attachments.  This is left as an
         // exercise for the user.
         heroCard.content.subtitle = `(${action.messagePayload.attachments.length} Attachments not included)`;
