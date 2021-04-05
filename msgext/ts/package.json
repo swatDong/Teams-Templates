@@ -17,6 +17,7 @@
         "url": "https://github.com"
     },
     "dependencies": {
+        "axios": "^0.21.1",
         "botbuilder": "~4.11.0",
         "replace": "^1.2.0",
         "restify": "~8.5.1"

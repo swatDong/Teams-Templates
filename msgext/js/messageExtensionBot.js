@@ -3,7 +3,7 @@
 
 const axios = require('axios');
 const querystring = require('querystring');
-const { TeamsActivityHandler, CardFactory, TeamsInfo } = require('botbuilder');
+const { TeamsActivityHandler, CardFactory } = require('botbuilder');
 
 class MessageExtensionBot extends TeamsActivityHandler {
 

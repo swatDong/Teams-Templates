@@ -1,7 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+const axios = require('axios');
+const querystring = require('querystring');
 const { DialogBot } = require('./dialogBot');
+const { CardFactory } = require('botbuilder');
 
 class TeamsBot extends DialogBot {
     /**
