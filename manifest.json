@@ -185,6 +185,10 @@
                 {
                     "version": "0.0.12+bot.TypeScript.default",
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.12+bot.TypeScript.default/0.0.12+bot.TypeScript.default.zip"
+                },
+                {
+                    "version": "0.0.13+bot.TypeScript.default",
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.13+bot.TypeScript.default/0.0.13+bot.TypeScript.default.zip"
                 }
             ]
         }
