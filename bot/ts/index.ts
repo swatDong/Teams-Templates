@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 // Import required packages
+import * as path from 'path';
 import * as restify from "restify";
 
 // Import required bot services.
@@ -80,6 +81,6 @@ server.post("/api/messages", (req, res) => {
 server.get(
     "/public/*",
     restify.plugins.serveStatic({
-        directory: __dirname
+        directory: path.join(__dirname, '..', 'public')
     })
 );
