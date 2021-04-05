@@ -279,6 +279,10 @@
                 {
                     "version": "0.0.7+msgext.TypeScript.default",
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.7+msgext.TypeScript.default/0.0.7+msgext.TypeScript.default.zip"
+                },
+                {
+                    "version": "0.0.8+msgext.TypeScript.default",
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.8+msgext.TypeScript.default/0.0.8+msgext.TypeScript.default.zip"
                 }
             ]
         }
