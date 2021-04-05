@@ -265,6 +265,10 @@
                 {
                     "version": "0.0.5+bot-msgext.JavaScript.default",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.5+bot-msgext.JavaScript.default/0.0.5+bot-msgext.JavaScript.default.zip"
+                },
+                {
+                    "version": "0.0.6+bot-msgext.JavaScript.default",
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.6+bot-msgext.JavaScript.default/0.0.6+bot-msgext.JavaScript.default.zip"
                 }
             ]
         },
