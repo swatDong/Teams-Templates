@@ -14,7 +14,6 @@ This bot has been created using [Bot Framework](https://dev.botframework.com), i
     ```
 
 ## Build and run
-
 - Install modules
 
     ```bash

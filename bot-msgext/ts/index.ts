@@ -1,17 +1,23 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-// index.js is used to setup and configure your bot
-
 // Import required packages
-const restify = require('restify');
+import * as path from 'path';
+import * as restify from "restify";
 
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
-const { BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } = require('botbuilder');
+import {
+    BotFrameworkAdapter,
+    ConversationState,
+    MemoryStorage,
+    UserState,
+    TurnContext
+} from "botbuilder";
 
-const { TeamsBot } = require('./bots/teamsBot');
-const { MainDialog } = require('./dialogs/mainDialog');
+// This bot's main dialog.
+import { TeamsBot } from "./bots/teamsBot";
+import { MainDialog } from "./dialogs/mainDialog";
 
 // Create adapter.
 // See https://aka.ms/about-bot-adapter to learn more about adapters.
@@ -20,27 +26,28 @@ const adapter = new BotFrameworkAdapter({
     appPassword: process.env.BOT_PASSWORD
 });
 
-adapter.onTurnError = async (context, error) => {
+// Catch-all for errors.
+const onTurnErrorHandler = async (context: TurnContext, error: Error) => {
     // This check writes out errors to console log .vs. app insights.
     // NOTE: In production environment, you should consider logging this to Azure
-    //       application insights. See https://aka.ms/bottelemetry for telemetry 
-    //       configuration instructions.
+    //       application insights.
     console.error(`\n [onTurnError] unhandled error: ${error}`);
 
     // Send a trace activity, which will be displayed in Bot Framework Emulator
     await context.sendTraceActivity(
-        'OnTurnError Trace',
+        "OnTurnError Trace",
         `${error}`,
-        'https://www.botframework.com/schemas/error',
-        'TurnError'
+        "https://www.botframework.com/schemas/error",
+        "TurnError"
     );
 
     // Send a message to the user
-    await context.sendActivity('The bot encountered an error or bug.');
-    await context.sendActivity('To continue to run this bot, please fix the bot source code.');
-    // Clear out state
-    await conversationState.delete(context);
+    await context.sendActivity("The bot encountered an error or bug.");
+    await context.sendActivity("To continue to run this bot, please fix the bot source code.");
 };
+
+// Set the onTurnError for the singleton BotFrameworkAdapter.
+adapter.onTurnError = onTurnErrorHandler;
 
 // Define the state store for your bot.
 // See https://aka.ms/about-bot-state to learn more about using MemoryStorage.
@@ -58,14 +65,14 @@ const bot = new TeamsBot(conversationState, userState, dialog);
 
 // Create HTTP server.
 const server = restify.createServer();
-server.listen(process.env.port || process.env.PORT || 3978, function () {
+server.listen(process.env.port || process.env.PORT || 3978, () => {
     console.log(`\n${server.name} listening to ${server.url}`);
-    console.log('\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator');
+    console.log("\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator");
     console.log('\nTo talk to your bot, open the emulator select "Open Bot"');
 });
 
 // Listen for incoming requests.
-server.post('/api/messages', (req, res) => {
+server.post("/api/messages", (req, res) => {
     adapter.processActivity(req, res, async (context) => {
         await bot.run(context);
     });
@@ -74,6 +81,6 @@ server.post('/api/messages', (req, res) => {
 server.get(
     "/public/*",
     restify.plugins.serveStatic({
-        directory: __dirname
+        directory: path.join(__dirname, '..')
     })
 );
