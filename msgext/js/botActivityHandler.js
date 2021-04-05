@@ -67,17 +67,44 @@ class BotActivityHandler extends TeamsActivityHandler {
         }
     }
 
+    // Search.
+    async handleTeamsMessagingExtensionQuery(context, query) {
+        const searchQuery = query.parameters[0].value;
+        const response = await axios.get(`http://registry.npmjs.com/-/v1/search?${querystring.stringify({ text: searchQuery, size: 8 })}`);
 
-    // Search and Link Unfurling.
+        const attachments = [];
+        response.data.objects.forEach(obj => {
+            const heroCard = CardFactory.heroCard(obj.package.name);
+            const preview = CardFactory.heroCard(obj.package.name);
+            preview.content.tap = { type: 'invoke', value: { description: obj.package.description } };
+            const attachment = { ...heroCard, preview };
+            attachments.push(attachment);
+        });
 
-    // This handler is used for the processing of "composeExtension/queryLink" activities from Teams.
-    // https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/messaging-extensions/search-extensions#receive-requests-from-links-inserted-into-the-compose-message-box
-    // By specifying domains under the messageHandlers section in the manifest, the bot can receive
-    // events when a user enters in a domain in the compose box.
+        return {
+            composeExtension: {
+                type: 'result',
+                attachmentLayout: 'list',
+                attachments: attachments
+            }
+        };
+    }
+
+    async handleTeamsMessagingExtensionSelectItem(context, obj) {
+        return {
+            composeExtension: {
+                type: 'result',
+                attachmentLayout: 'list',
+                attachments: [CardFactory.thumbnailCard(obj.description)]
+            }
+        };
+    }
+
+    // Link Unfurling.
     handleTeamsAppBasedLinkQuery(context, query) {
-        const attachment = CardFactory.thumbnailCard('Thumbnail Card',
+        const attachment = CardFactory.thumbnailCard('Image Preview Card',
             query.url,
-            ['https://raw.githubusercontent.com/microsoft/botframework-sdk/master/icon.png']);
+            [query.url]);
 
         const result = {
             attachmentLayout: 'list',
@@ -89,30 +116,6 @@ class BotActivityHandler extends TeamsActivityHandler {
             composeExtension: result
         };
         return response;
-    }
-
-    async handleTeamsMessagingExtensionQuery(context, query) {
-        // Note: The Teams manifest.json for this sample also inclues a Search Query, in order to enable installing from App Studio.
-        // const searchQuery = query.parameters[0].value;
-        const heroCard = CardFactory.heroCard('This is a Link Unfurling Sample',
-            'This sample demonstrates how to handle link unfurling in Teams.  Please review the readme for more information.');
-        heroCard.content.subtitle = 'It will unfurl links from *.BotFramework.com';
-        const attachment = { ...heroCard, heroCard };
-
-        switch (query.commandId) {
-            case 'searchQuery':
-                return {
-                    composeExtension: {
-                        type: 'result',
-                        attachmentLayout: 'list',
-                        attachments: [
-                            attachment
-                        ]
-                    }
-                };
-            default:
-                throw new Error('NotImplemented');
-        }
     }
 }
 
