@@ -81,6 +81,6 @@ server.post("/api/messages", (req, res) => {
 server.get(
     "/public/*",
     restify.plugins.serveStatic({
-        directory: path.join(__dirname, '..', 'public')
+        directory: path.join(__dirname, '..')
     })
 );
