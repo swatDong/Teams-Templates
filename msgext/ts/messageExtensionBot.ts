@@ -3,12 +3,12 @@
 
 import { default as axios } from 'axios';
 import * as querystring from 'querystring';
-import { ActivityHandler, CardFactory } from 'botbuilder';
+import { TeamsActivityHandler, CardFactory, TurnContext } from 'botbuilder';
 
-export class MessageExtensionBot extends ActivityHandler {
+export class MessageExtensionBot extends TeamsActivityHandler {
 
     // Action.
-    handleTeamsMessagingExtensionSubmitAction(context, action) {
+    public async handleTeamsMessagingExtensionSubmitAction(context: TurnContext, action: any): Promise<any> {
         switch (action.commandId) {
             case 'createCard':
                 return createCardCommand(context, action);
@@ -20,7 +20,7 @@ export class MessageExtensionBot extends ActivityHandler {
     }
 
     // Search.
-    async handleTeamsMessagingExtensionQuery(context, query) {
+    public async handleTeamsMessagingExtensionQuery(context: TurnContext, query: any): Promise<any> {
         const searchQuery = query.parameters[0].value;
         const response = await axios.get(`http://registry.npmjs.com/-/v1/search?${querystring.stringify({ text: searchQuery, size: 8 })}`);
 
@@ -42,7 +42,7 @@ export class MessageExtensionBot extends ActivityHandler {
         };
     }
 
-    async handleTeamsMessagingExtensionSelectItem(context, obj) {
+    public async handleTeamsMessagingExtensionSelectItem(context: TurnContext, obj: any): Promise<any> {
         return {
             composeExtension: {
                 type: 'result',
@@ -53,8 +53,8 @@ export class MessageExtensionBot extends ActivityHandler {
     }
 
     // Link Unfurling.
-    handleTeamsAppBasedLinkQuery(context, query) {
-        const attachment = CardFactory.thumbnailCard('Thumbnail Card',
+    public async handleTeamsAppBasedLinkQuery(context: TurnContext, query: any): Promise<any> {
+        const attachment = CardFactory.thumbnailCard('Image Preview Card',
             query.url,
             [query.url]);
 
@@ -71,7 +71,7 @@ export class MessageExtensionBot extends ActivityHandler {
     }
 }
 
-function createCardCommand(context, action) {
+async function createCardCommand(context: TurnContext, action: any): Promise<any> {
     // The user has chosen to create a card by choosing the 'Create Card' context menu command.
     const data = action.data;
     const heroCard = CardFactory.heroCard(data.title, data.text);
@@ -91,7 +91,7 @@ function createCardCommand(context, action) {
     };
 }
 
-function shareMessageCommand(context, action) {
+async function shareMessageCommand(context: TurnContext, action: any): Promise<any> {
     // The user has chosen to share a message by choosing the 'Share Message' context menu command.
     let userName = 'unknown';
     if (action.messagePayload &&
