@@ -8,7 +8,7 @@ import * as restify from 'restify';
 import { BotFrameworkAdapter } from 'botbuilder';
 
 // This bot's main dialog.
-import { EchoBot } from './bot';
+import { MessageExtensionBot } from './messageExtensionBot';
 
 // Create HTTP server.
 const server = restify.createServer();
@@ -49,12 +49,12 @@ const onTurnErrorHandler = async (context, error) => {
 adapter.onTurnError = onTurnErrorHandler;
 
 // Create the main dialog.
-const myBot = new EchoBot();
+const messageExtensionBot = new MessageExtensionBot();
 
 // Listen for incoming requests.
 server.post('/api/messages', (req, res) => {
     adapter.processActivity(req, res, async (context) => {
         // Route to main dialog.
-        await myBot.run(context);
+        await messageExtensionBot.run(context);
     });
 });
