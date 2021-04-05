@@ -5,7 +5,7 @@ const axios = require('axios');
 const querystring = require('querystring');
 const { TeamsActivityHandler, CardFactory, TeamsInfo } = require('botbuilder');
 
-class BotActivityHandler extends TeamsActivityHandler {
+class MessageExtensionBot extends TeamsActivityHandler {
 
     // Action.
     handleTeamsMessagingExtensionSubmitAction(context, action) {
@@ -19,55 +19,7 @@ class BotActivityHandler extends TeamsActivityHandler {
         }
     }
 
-    async handleTeamsMessagingExtensionFetchTask(context, action) {
-        try {
-            const member = await this.getSingleMember(context);
-            return {
-                task: {
-                    type: 'continue',
-                    value: {
-                        card: GetAdaptiveCardAttachment(),
-                        height: 400,
-                        title: 'Hello ' + member,
-                        width: 300
-                    },
-                },
-            };
-        } catch (e) {
-            if (e.code === 'BotNotInConversationRoster') {
-                return {
-                    task: {
-                        type: 'continue',
-                        value: {
-                            card: GetJustInTimeCardAttachment(),
-                            height: 400,
-                            title: 'Adaptive Card - App Installation',
-                            width: 300
-                        },
-                    },
-                };
-            }
-            throw e;
-        }
-
-    }
-
-    async getSingleMember(context) {
-        try {
-            const member = await TeamsInfo.getMember(
-                context,
-                context.activity.from.id
-            );
-            return member.name;
-        } catch (e) {
-            if (e.code === 'MemberNotFoundInConversation') {
-                context.sendActivity(MessageFactory.text('Member not found.'));
-                return e.code;
-            }
-            throw e;
-        }
-    }
-
+    // Search.
     async handleTeamsMessagingExtensionQuery(context, query) {
         const searchQuery = query.parameters[0].value;
         const response = await axios.get(`http://registry.npmjs.com/-/v1/search?${querystring.stringify({ text: searchQuery, size: 8 })}`);
@@ -100,12 +52,7 @@ class BotActivityHandler extends TeamsActivityHandler {
         };
     }
 
-    // Search and Link Unfurling.
-
-    // This handler is used for the processing of "composeExtension/queryLink" activities from Teams.
-    // https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/messaging-extensions/search-extensions#receive-requests-from-links-inserted-into-the-compose-message-box
-    // By specifying domains under the messageHandlers section in the manifest, the bot can receive
-    // events when a user enters in a domain in the compose box.
+    // Link Unfurling.
     handleTeamsAppBasedLinkQuery(context, query) {
         const attachment = CardFactory.thumbnailCard('Thumbnail Card',
             query.url,
@@ -192,4 +139,4 @@ function shareMessageCommand(context, action) {
     };
 }
 
-module.exports.BotActivityHandler = BotActivityHandler;
+module.exports.MessageExtensionBot = MessageExtensionBot;

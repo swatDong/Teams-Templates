@@ -9,7 +9,7 @@ const express = require('express');
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
 const { BotFrameworkAdapter } = require('botbuilder');
 
-const { BotActivityHandler } = require('./botActivityHandler');
+const { MessageExtensionBot } = require('./messageExtensionBot.js');
 
 // Create adapter.
 // See https://aka.ms/about-bot-adapter to learn more about adapters.
@@ -38,7 +38,7 @@ adapter.onTurnError = async (context, error) => {
 };
 
 // Create bot handlers
-const botActivityHandler = new BotActivityHandler();
+const messageExtensionBot = new MessageExtensionBot();
 
 // Create HTTP server.
 const server = express();
@@ -51,6 +51,6 @@ server.listen(port, () =>
 server.post('/api/messages', (req, res) => {
     adapter.processActivity(req, res, async (context) => {
         // Process bot activity
-        await botActivityHandler.run(context);
+        await messageExtensionBot.run(context);
     });
 });
