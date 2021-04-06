@@ -27,10 +27,21 @@ class DialogBot extends TeamsActivityHandler {
         this.dialogState = this.conversationState.createProperty('DialogState');
 
         this.onMessage(async (context, next) => {
-            console.log('Running dialog with Message Activity.');
+            switch (context.activity.text) {
+                case 'login':
+                case 'logout': {
+                    console.log('Running dialog with Message Activity.');
 
-            // Run the Dialog with the new message Activity.
-            await this.dialog.run(context, this.dialogState);
+                    // Run the Dialog with the new message Activity.
+                    await this.dialog.run(context, this.dialogState);
+
+                    break;
+                }
+                default: {
+                    await context.sendActivity(`You said "${context.activity.text}"`);
+                    break;
+                }
+            }
 
             await next();
         });
