@@ -150,7 +150,7 @@ class Tab extends React.Component {
         {
           this.state.showFunctionMessage &&
           <p>
-            <h2>Message from Azure Function</h2>
+            <h2>Message from Azure Function: {process.env.REACT_APP_FUNC_ENDPOINT}</h2>
             <div>
               {this.state.functionMessage &&<pre>{this.state.functionMessage}</pre> }
               {this.state.functionErrorMessage && <div>{this.state.functionErrorMessage}</div>}
