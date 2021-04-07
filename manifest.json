@@ -117,6 +117,10 @@
             ],
             "with-function": [
                 {
+                    "version": "0.2.0+tab.JavaScript.with-function",
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.2.0+tab.JavaScript.with-function/0.2.0+tab.JavaScript.with-function.zip"
+                },
+                {
                     "version": "0.1.7+tab.JavaScript.with-function",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.7+tab.JavaScript.with-function/0.1.7+tab.JavaScript.with-function.zip"
                 },
