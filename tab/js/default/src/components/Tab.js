@@ -32,7 +32,7 @@ class Tab extends React.Component {
   }
 
   async initTeamsFx() {
-    var teamsfxEndpoint = process.env.REACT_APP_MODS_ENDPOINT;
+    var teamsfxEndpoint = process.env.REACT_APP_TEAMSFX_ENDPOINT;
     var startLoginPageUrl = process.env.REACT_APP_START_LOGIN_PAGE_URL;
     await teamsfx.init(teamsfxEndpoint, startLoginPageUrl);
     var userInfo = teamsfx.getUserInfo();
