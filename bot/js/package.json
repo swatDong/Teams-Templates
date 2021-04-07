@@ -19,5 +19,9 @@
     "botbuilder-dialogs": "~4.11.0",
     "isomorphic-fetch": "^3.0.0",
     "restify": "~8.5.1"
+  },
+  "devDependencies": {
+    "ngrok": "^3.4.0",
+    "nodemon": "^2.0.7"
   }
 }
