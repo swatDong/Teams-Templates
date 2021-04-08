@@ -72,7 +72,7 @@ server.post('/api/messages', (req, res) => {
 });
 
 server.get(
-    "/public/*",
+    "/*",
     restify.plugins.serveStatic({
         directory: __dirname
     })
