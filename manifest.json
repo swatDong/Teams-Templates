@@ -147,101 +147,13 @@
         "JavaScript": {
             "default": [
                 {
-                    "version": "0.0.6+bot",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.6+bot/bot_JavaScript_default_0.0.6+bot.zip"
-                },
-                {
-                    "version": "0.0.7+bot.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.7+bot.JavaScript.default/0.0.7+bot.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.8+bot.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.8+bot.JavaScript.default/0.0.8+bot.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.9+bot.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.9+bot.JavaScript.default/0.0.9+bot.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.12+bot.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.12+bot.JavaScript.default/0.0.12+bot.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.13+bot.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.13+bot.JavaScript.default/0.0.13+bot.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.14+bot.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.14+bot.JavaScript.default/0.0.14+bot.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.15+bot.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.15+bot.JavaScript.default/0.0.15+bot.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.16+bot.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.16+bot.JavaScript.default/0.0.16+bot.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.17+bot.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.17+bot.JavaScript.default/0.0.17+bot.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.18+bot.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.17+bot.JavaScript.default/0.0.17+bot.JavaScript.default.zip"
+                    "version": "0.0.19+bot.JavaScript.default",
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.19+bot.JavaScript.default/0.0.19+bot.JavaScript.default.zip"
                 }
             ]
         },
         "TypeScript": {
             "default": [
-                {
-                    "version": "0.0.6+bot",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.6+bot/bot_TypeScript_default_0.0.6+bot.zip"
-                },
-                {
-                    "version": "0.0.7+botTsDefault",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.7+botTsDefault/0.0.7+botTsDefault.zip"
-                },
-                {
-                    "version": "0.0.8+bot.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.8+bot.TypeScript.default/0.0.8+bot.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.9+bot.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.9+bot.TypeScript.default/0.0.9+bot.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.10+bot.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.10+bot.TypeScript.default/0.0.10+bot.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.11+bot.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.11+bot.TypeScript.default/0.0.11+bot.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.12+bot.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.12+bot.TypeScript.default/0.0.12+bot.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.13+bot.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.13+bot.TypeScript.default/0.0.13+bot.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.14+bot.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.14+bot.TypeScript.default/0.0.14+bot.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.15+bot.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.15+bot.TypeScript.default/0.0.15+bot.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.16+bot.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.16+bot.TypeScript.default/0.0.16+bot.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.17+bot.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.17+bot.TypeScript.default/0.0.17+bot.TypeScript.default.zip"
-                },
                 {
                     "version": "0.0.18+bot.TypeScript.default",
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.18+bot.TypeScript.default/0.0.18+bot.TypeScript.default.zip"
@@ -253,46 +165,6 @@
         "JavaScript": {
             "default": [
                 {
-                    "version": "0.0.1+msgext.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.1+msgext.JavaScript.default/0.0.1+msgext.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.2+msgext.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.2+msgext.JavaScript.default/0.0.2+msgext.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.6+msgext.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.6+msgext.JavaScript.default/0.0.6+msgext.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.7+msgext.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.7+msgext.JavaScript.default/0.0.7+msgext.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.8+msgext.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.8+msgext.JavaScript.default/0.0.8+msgext.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.9+msgext.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.9+msgext.JavaScript.default/0.0.9+msgext.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.10+msgext.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.10+msgext.JavaScript.default/0.0.10+msgext.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.11+msgext.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.11+msgext.JavaScript.default/0.0.11+msgext.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.12+msgext.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.12+msgext.JavaScript.default/0.0.12+msgext.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.13+msgext.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.13+msgext.JavaScript.default/0.0.13+msgext.JavaScript.default.zip"
-                },
-                {
                     "version": "0.0.14+msgext.JavaScript.default",
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.14+msgext.JavaScript.default/0.0.14+msgext.JavaScript.default.zip"
                 }
@@ -300,46 +172,6 @@
         },
         "TypeScript": {
             "default": [
-                {
-                    "version": "0.0.1+msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.1+msgext.TypeScript.default/0.0.1+msgext.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.2+msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.2+msgext.TypeScript.default/0.0.2+msgext.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.3+msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.3+msgext.TypeScript.default/0.0.3+msgext.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.4+msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.4+msgext.TypeScript.default/0.0.4+msgext.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.5+msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.5+msgext.TypeScript.default/0.0.5+msgext.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.6+msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.6+msgext.TypeScript.default/0.0.6+msgext.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.7+msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.7+msgext.TypeScript.default/0.0.7+msgext.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.8+msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.8+msgext.TypeScript.default/0.0.8+msgext.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.9+msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.9+msgext.TypeScript.default/0.0.9+msgext.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.10+msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.10+msgext.TypeScript.default/0.0.10+msgext.TypeScript.default.zip"
-                },
                 {
                     "version": "0.0.11+msgext.TypeScript.default",
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.11+msgext.TypeScript.default/0.0.11+msgext.TypeScript.default.zip"
@@ -351,42 +183,6 @@
         "JavaScript": {
             "default": [
                 {
-                    "version": "0.0.1+bot-msgext.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.1+bot-msgext.JavaScript.default/0.0.1+bot-msgext.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.2+bot-msgext.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.2+bot-msgext.JavaScript.default/0.0.2+bot-msgext.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.3+bot-msgext.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.3+bot-msgext.JavaScript.default/0.0.3+bot-msgext.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.4+bot-msgext.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.4+bot-msgext.JavaScript.default/0.0.4+bot-msgext.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.5+bot-msgext.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.5+bot-msgext.JavaScript.default/0.0.5+bot-msgext.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.6+bot-msgext.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.6+bot-msgext.JavaScript.default/0.0.6+bot-msgext.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.7+bot-msgext.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.7+bot-msgext.JavaScript.default/0.0.7+bot-msgext.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.8+bot-msgext.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.8+bot-msgext.JavaScript.default/0.0.8+bot-msgext.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.0.9+bot-msgext.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.9+bot-msgext.JavaScript.default/0.0.9+bot-msgext.JavaScript.default.zip"
-                },
-                {
                     "version": "0.0.10+bot-msgext.JavaScript.default",
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.10+bot-msgext.JavaScript.default/0.0.10+bot-msgext.JavaScript.default.zip"
                 }
@@ -394,46 +190,6 @@
         },
         "TypeScript": {
             "default": [
-                {
-                    "version": "0.0.1+bot-msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.1+bot-msgext.TypeScript.default/0.0.1+bot-msgext.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.2+bot-msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.2+bot-msgext.TypeScript.default/0.0.2+bot-msgext.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.3+bot-msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.3+bot-msgext.TypeScript.default/0.0.3+bot-msgext.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.4+bot-msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.4+bot-msgext.TypeScript.default/0.0.4+bot-msgext.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.5+bot-msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.5+bot-msgext.TypeScript.default/0.0.5+bot-msgext.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.6+bot-msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.6+bot-msgext.TypeScript.default/0.0.6+bot-msgext.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.7+bot-msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.7+bot-msgext.TypeScript.default/0.0.7+bot-msgext.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.8+bot-msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.8+bot-msgext.TypeScript.default/0.0.8+bot-msgext.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.9+bot-msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.9+bot-msgext.TypeScript.default/0.0.9+bot-msgext.TypeScript.default.zip"
-                },
-                {
-                    "version": "0.0.10+bot-msgext.TypeScript.default",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.10+bot-msgext.TypeScript.default/0.0.10+bot-msgext.TypeScript.default.zip"
-                },
                 {
                     "version": "0.0.11+bot-msgext.TypeScript.default",
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.11+bot-msgext.TypeScript.default/0.0.11+bot-msgext.TypeScript.default.zip"
