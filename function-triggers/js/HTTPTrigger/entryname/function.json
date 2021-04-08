@@ -17,8 +17,8 @@
     },
     {
       "direction": "in",
-      "name": "config",
-      "type": "MODS"
+      "name": "teamsfxConfig",
+      "type": "TeamsFx"
     }
   ]
 }
