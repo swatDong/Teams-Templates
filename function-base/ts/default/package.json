@@ -1,5 +1,5 @@
 {
-  "name": "{{appName}}-api",
+  "name": "teamsfx-template-api",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@azure/functions": "^1.2.2",
-    "teamsdev-server": "^0.1.0"
+    "@microsoft/microsoft-graph-client": "^2.2.1",
+    "isomorphic-fetch": "^3.0.0",
+    "teamsdev-client": "^1.1.0"
   },
   "devDependencies": {
     "typescript": "^3.3.3"

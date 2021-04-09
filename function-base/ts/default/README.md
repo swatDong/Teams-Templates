@@ -28,7 +28,7 @@ By default, TeamsFX will provide template code for you to get started. The start
 The runtime versions supported by Azure Functions are list [here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions). By default, TeamsFX toolkit provisions an Azure function app with function runtime version 3, and node runtime version 12. You can change the node version through Azure Portal.
 
 - Sign in [Azure Portal](https://azure.microsoft.com/).
-- Find the Azure function app. The resource group name and the Azure function app name are recorded in the file '.mods/env.*.json'. You can find them by searching the key 'resourceGroupName' and 'functionAppName' in that file.
+- Find the Azure function app. The resource group name and the Azure function app name are recorded in the file '.fx/env.*.json'. You can find them by searching the key 'resourceGroupName' and 'functionAppName' in that file.
 - After enter the home page of the Azure function app, you can find a nav item called 'Configuration' under 'settings' group.
 - Click 'Configuration', you would see a list of settings. Then click 'WEBSITE_NODE_DEFAULT_VERSION' and update the value to '~10', '~12' or '~14' according to your requirement.
 - After Click 'OK' button, don't forget to click 'Save' button on the top of the page.
