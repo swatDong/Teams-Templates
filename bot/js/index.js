@@ -5,6 +5,7 @@
 
 // Import required packages
 const restify = require('restify');
+const path = require('path');
 
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
@@ -72,8 +73,8 @@ server.post('/api/messages', (req, res) => {
 });
 
 server.get(
-    "/*",
+    "/",
     restify.plugins.serveStatic({
-        directory: __dirname
+        directory: path.join(__dirname, 'public')
     })
 );
