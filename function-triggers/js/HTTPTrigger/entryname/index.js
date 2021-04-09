@@ -5,7 +5,7 @@
 
 // Import polyfills for fetch required by msgraph-sdk-javascript.
 require('isomorphic-fetch');
-const teamsfx = require('teamsdev-client');
+const teamsfx = require('teamsdev-client/dist');
 
 /**
  * This function handles requests from teamsfx client.
