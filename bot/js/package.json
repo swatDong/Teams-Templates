@@ -13,7 +13,7 @@
     "watch": "nodemon ./index.js"
   },
   "dependencies": {
-    "@microsoft/teamsfx": "0.0.4",
+    "teamsdev-client": "^1.0.0",
     "@microsoft/microsoft-graph-client": "^2.2.1",
     "botbuilder": "~4.11.0",
     "botbuilder-dialogs": "~4.11.0",

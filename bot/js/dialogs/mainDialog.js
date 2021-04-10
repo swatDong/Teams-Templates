@@ -15,7 +15,7 @@ const {
     loadConfiguration,
     OnBehalfOfUserCredential,
     TeamsBotSsoPrompt
-} = require("@microsoft/teamsfx");
+} = require("teamsdev-client");
 
 class MainDialog extends LogoutDialog {
     constructor() {
