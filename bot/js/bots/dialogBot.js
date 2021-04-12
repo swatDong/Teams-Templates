@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-const { TeamsActivityHandler } = require('botbuilder');
+const { TeamsActivityHandler, CardFactory, ActionTypes } = require('botbuilder');
 class DialogBot extends TeamsActivityHandler {
     /**
      *
@@ -38,7 +38,17 @@ class DialogBot extends TeamsActivityHandler {
                     break;
                 }
                 default: {
-                    await context.sendActivity(`You said "${context.activity.text}"`);
+                    const value = { count: 0 };
+                    const card = CardFactory.heroCard(
+                        'Lets talk...',
+                        null,
+                        [{
+                            type: ActionTypes.MessageBack,
+                            title: 'Say Hello',
+                            value: value,
+                            text: 'Hello'
+                        }]);
+                    await context.sendActivity({ attachments: [card] });
                     break;
                 }
             }

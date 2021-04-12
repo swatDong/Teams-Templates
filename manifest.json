@@ -193,6 +193,10 @@
                 {
                     "version": "0.0.24+bot.JavaScript.default",
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.24+bot.JavaScript.default/0.0.24+bot.JavaScript.default.zip"
+                },
+                {
+                    "version": "0.0.25+bot.JavaScript.default",
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.25+bot.JavaScript.default/0.0.25+bot.JavaScript.default.zip"
                 }
             ]
         },
