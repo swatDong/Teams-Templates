@@ -9,7 +9,7 @@ import {
   loadConfiguration,
   getResourceConfiguration,
   ResourceType
-} from "@microsoft/teamsfx";
+} from "teamsdev-client";
 import * as axios from "axios";
 import { Button } from '@fluentui/react-northstar'
 

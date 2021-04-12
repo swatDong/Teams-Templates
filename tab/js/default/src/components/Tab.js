@@ -7,7 +7,7 @@ import {
   TeamsUserCredential,
   createMicrosoftGraphClient,
   loadConfiguration,
-} from "@microsoft/teamsfx";
+} from "teamsdev-client";
 import { Button } from '@fluentui/react-northstar'
 
 /**
