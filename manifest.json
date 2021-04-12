@@ -33,6 +33,10 @@
                 {
                     "version": "0.1.7",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.7+function-base.TypeScript.default/0.1.7+function-base.TypeScript.default.zip"
+                },
+                {
+                    "version": "0.2.0",
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.2.0+function-base.TypeScript.default/0.2.0+function-base.TypeScript.default.zip"
                 }
             ]
         },
