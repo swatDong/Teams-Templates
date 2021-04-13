@@ -3,7 +3,14 @@
 
 import React from 'react';
 import './App.css';
-import { MODS } from 'mods-client';
+import {
+  TeamsUserCredential,
+  createMicrosoftGraphClient,
+  loadConfiguration,
+  getResourceConfiguration,
+  ResourceType
+} from "teamsdev-client";
+import * as axios from "axios";
 import { Button } from '@fluentui/react-northstar'
 
 /**
@@ -30,24 +37,41 @@ class Tab extends React.Component {
   //Learn more: https://reactjs.org/docs/react-component.html#componentdidmount
   async componentDidMount() {
     // Next steps: Error handling using the error object
-    await this.initMODS();
+    await this.initTeamsFx();
     await this.callGraphSilent();
   }
 
-  async initMODS() {
-    var modsEndpoint = process.env.REACT_APP_MODS_ENDPOINT;
-    var startLoginPageUrl = process.env.REACT_APP_START_LOGIN_PAGE_URL;
-    var functionEndpoint = process.env.REACT_APP_FUNC_ENDPOINT;
-    await MODS.init(modsEndpoint, startLoginPageUrl, functionEndpoint);
-    var userInfo = MODS.getUserInfo();
+  async initTeamsFx() {
+    loadConfiguration({
+      authentication: {
+        initiateLoginEndpoint: process.env.REACT_APP_START_LOGIN_PAGE_URL,
+        simpleAuthEndpoint: process.env.REACT_APP_TEAMSFX_ENDPOINT,
+        clientId: process.env.REACT_APP_CLIENT_ID,
+      },
+      resources: [
+        {
+          type: ResourceType.API,
+          name: "default",
+          properties: {
+            endpoint: process.env.REACT_APP_FUNC_ENDPOINT
+          }
+        }
+      ]
+    });
+    const credential = new TeamsUserCredential();
+    const userInfo = await credential.getUserInfo();
+
     this.setState({
       userInfo: userInfo
     });
+
+    this.credential = credential;
+    this.scope = ["User.Read"];
   }
 
   async callGraphSilent() {
     try {
-      var graphClient = await MODS.getMicrosoftGraphClient();
+      var graphClient = await createMicrosoftGraphClient(this.credential, this.scope);
       var profile = await graphClient.api('/me').get();
 
       var message = '';
@@ -56,18 +80,24 @@ class Tab extends React.Component {
 
       try {
         var functionName = process.env.REACT_APP_FUNC_NAME || 'myFunc';
-        var messageJson = await MODS.callFunction(functionName, 'post', 'hello');
-        message = JSON.stringify(messageJson, undefined, 2);
+        const accessToken = await this.credential.getToken("");
+        const apiConfig = getResourceConfiguration(ResourceType.API);
+        const response = await axios.default.get(apiConfig.endpoint + "/api/" + functionName, {
+          headers: {
+            authorization: "Bearer " + accessToken.token
+          }
+        });
+        message = JSON.stringify(response.data, undefined, 2);
       } catch (err) {
         if (err.response && err.response.status && err.response.status === 404) {
-          funcErrorMsg = 'There may be a problem with the deployment of Azure Function App, please deploy Azure Function (Run command palette "MODS - Deploy Package") first before running this App';
+          funcErrorMsg = 'There may be a problem with the deployment of Azure Function App, please deploy Azure Function (Run command palette "TeamsFx - Deploy Package") first before running this App';
         } else if (err.message === 'Network Error') {
           funcErrorMsg = 'Cannot call Azure Function due to network error, please check your network connection status and ';
           if (err.config.url.indexOf('localhost') >= 0) {
             funcErrorMsg += 'make sure to start Azure Function locally (Run "npm run start" command inside api folder from terminal) first before running this App';
           }
           else {
-            funcErrorMsg += 'make sure to provision and deploy Azure Function (Run command palette "MODS - Provision Resource" and "MODS - Deploy Package") first before running this App';
+            funcErrorMsg += 'make sure to provision and deploy Azure Function (Run command palette "TeamsFx - Provision Resource" and "TeamsFx - Deploy Package") first before running this App';
           }
         } else {
           funcErrorMsg = err.toString();
@@ -107,7 +137,7 @@ class Tab extends React.Component {
 
   async loginBtnClick() {
     try {
-      await MODS.popupLoginPage();
+      await this.credential.login(this.scope);
     }
     catch (err) {
       alert('Login failed: ' + err);
@@ -123,7 +153,7 @@ class Tab extends React.Component {
     return (
       <div>
         <h2>Basic info from SSO</h2>
-        <p><b>Name:</b> {this.state.userInfo.userName}</p>
+        <p><b>Name:</b> {this.state.userInfo.displayName}</p>
         <p><b>E-mail:</b> {this.state.userInfo.preferredUserName}</p>
 
         {this.state.showLoginBtn && <Button content='Grant permission & get information' onClick={() => this.loginBtnClick()} primary />}
@@ -150,7 +180,7 @@ class Tab extends React.Component {
         {
           this.state.showFunctionMessage &&
           <p>
-            <h2>Message from Azure Function</h2>
+            <h2>Message from Azure Function: {process.env.REACT_APP_FUNC_ENDPOINT}</h2>
             <div>
               {this.state.functionMessage &&<pre>{this.state.functionMessage}</pre> }
               {this.state.functionErrorMessage && <div>{this.state.functionErrorMessage}</div>}

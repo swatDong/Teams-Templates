@@ -18,8 +18,8 @@
     },
     {
       "direction": "in",
-      "name": "config",
-      "type": "MODS"
+      "name": "teamsfxContext",
+      "type": "TeamsFx"
     }
   ],
   "scriptFile": "../dist/{{functionName}}/index.js"

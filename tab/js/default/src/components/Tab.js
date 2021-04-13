@@ -3,7 +3,11 @@
 
 import React from 'react';
 import './App.css';
-import { MODS } from 'mods-client';
+import {
+  TeamsUserCredential,
+  createMicrosoftGraphClient,
+  loadConfiguration,
+} from "teamsdev-client";
 import { Button } from '@fluentui/react-northstar'
 
 /**
@@ -27,23 +31,32 @@ class Tab extends React.Component {
   //Learn more: https://reactjs.org/docs/react-component.html#componentdidmount
   async componentDidMount() {
     // Next steps: Error handling using the error object
-    await this.initMODS();
+    await this.initTeamsFx();
     await this.callGraphSilent();
   }
 
-  async initMODS() {
-    var modsEndpoint = process.env.REACT_APP_MODS_ENDPOINT;
-    var startLoginPageUrl = process.env.REACT_APP_START_LOGIN_PAGE_URL;
-    await MODS.init(modsEndpoint, startLoginPageUrl);
-    var userInfo = MODS.getUserInfo();
+  async initTeamsFx() {
+    loadConfiguration({
+      authentication: {
+        initiateLoginEndpoint: process.env.REACT_APP_START_LOGIN_PAGE_URL,
+        simpleAuthEndpoint: process.env.REACT_APP_TEAMSFX_ENDPOINT,
+        clientId: process.env.REACT_APP_CLIENT_ID,
+      }
+    });
+    const credential = new TeamsUserCredential();
+    const userInfo = await credential.getUserInfo();
+
     this.setState({
       userInfo: userInfo
     });
+
+    this.credential = credential;
+    this.scope = ["User.Read"];
   }
 
   async callGraphSilent() {
     try {
-      var graphClient = await MODS.getMicrosoftGraphClient();
+      var graphClient = await createMicrosoftGraphClient(this.credential, this.scope);
       var profile = await graphClient.api('/me').get();
 
       this.setState({
@@ -72,7 +85,7 @@ class Tab extends React.Component {
 
   async loginBtnClick() {
     try {
-      await MODS.popupLoginPage();
+      await this.credential.login(this.scope);
     }
     catch (err) {
       alert('Login failed: ' + err);
@@ -88,7 +101,7 @@ class Tab extends React.Component {
     return (
       <div>
         <h2>Basic info from SSO</h2>
-        <p><b>Name:</b> {this.state.userInfo.userName}</p>
+        <p><b>Name:</b> {this.state.userInfo.displayName}</p>
         <p><b>E-mail:</b> {this.state.userInfo.preferredUserName}</p>
 
         {this.state.showLoginBtn && <Button content='Grant permission & get information' onClick={() => this.loginBtnClick()} primary />}

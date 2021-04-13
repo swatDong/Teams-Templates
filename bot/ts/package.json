@@ -8,7 +8,7 @@
     "scripts": {
         "build": "tsc --build",
         "lint": "tslint -c tslint.json 'src/**/*.ts'",
-        "start": "tsc --build && node ./lib/index.js",
+        "start": "node ./lib/index.js",
         "test": "echo \"Error: no test specified\" && exit 1",
         "watch": "nodemon --watch ./src -e ts --exec \"npm run start\""
     },
@@ -17,16 +17,20 @@
         "url": "https://github.com"
     },
     "dependencies": {
-        "botbuilder": "~4.11.0",
-        "dotenv": "^8.2.0",
-        "replace": "^1.2.0",
-        "restify": "~8.5.1"
+        "@azure/msal-node": "^1.0.0-beta.3",
+        "@microsoft/teamsfx": "0.0.4",
+        "botbuilder": "^4.12.0",
+        "botbuilder-core": "^4.12.0",
+        "botbuilder-dialogs": "^4.12.0",
+        "isomorphic-fetch": "^3.0.0",
+        "restify": "^8.5.1",
+        "uuid": "^8.3.2"
     },
     "devDependencies": {
-        "@types/dotenv": "6.1.1",
         "@types/restify": "8.4.2",
-        "nodemon": "~2.0.4",
         "tslint": "~6.1.2",
-        "typescript": "~3.9.2"
+        "typescript": "~3.9.2",
+        "ngrok": "^3.4.0",
+        "nodemon": "^2.0.7"
     }
 }

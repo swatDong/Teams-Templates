@@ -1,15 +1,17 @@
 {
-  "name": "microsoft-teams-ext",
+  "name": "teamsfx-template-tab",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@microsoft/teams-js": "^1.6.0",
+    "teamsdev-client": "^1.1.0",
     "@fluentui/react-northstar": "^0.51.0",
+    "axios": "^0.21.1",
+    "tslib": "^2.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.4.3",
-    "mods-client": "github:OfficeDev/mods-client-sdk-private-preview"
+    "react-scripts": "^3.4.3"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -4,7 +4,7 @@
     "target": "es2016",
     "module": "commonjs",
     "outDir": "./lib",
-    "rootDir": "./src",
+    "rootDir": "./",
     "sourceMap": true,
     "incremental": true,
     "tsBuildInfoFile": "./lib/.tsbuildinfo"
