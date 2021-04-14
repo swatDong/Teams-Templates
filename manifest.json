@@ -24,6 +24,14 @@
                 }
             ]
         },
+        "javascript": {
+            "default": [
+                {
+                    "version": "0.2.0",
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.2.0+function-base.JavaScript.default/0.2.0+function-base.JavaScript.default.zip"
+                }
+            ]
+        },
         "TypeScript": {
             "default": [
                 {
@@ -34,6 +42,14 @@
                     "version": "0.1.7",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.7+function-base.TypeScript.default/0.1.7+function-base.TypeScript.default.zip"
                 },
+                {
+                    "version": "0.2.0",
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.2.0+function-base.TypeScript.default/0.2.0+function-base.TypeScript.default.zip"
+                }
+            ]
+        },
+        "typescript": {
+            "default": [
                 {
                     "version": "0.2.0",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.2.0+function-base.TypeScript.default/0.2.0+function-base.TypeScript.default.zip"
@@ -74,6 +90,14 @@
                 }
             ]
         },
+        "javascript": {
+            "HTTPTrigger": [
+                {
+                    "version": "0.2.0",
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.2.0+function-triggers.JavaScript.HTTPTrigger/0.2.0+function-triggers.JavaScript.HTTPTrigger.zip"
+                }
+            ]
+        },
         "TypeScript": {
             "HTTPTrigger": [
                 {
@@ -84,6 +108,14 @@
                     "version": "0.1.7",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.7+function-triggers.TypeScript.HTTPTrigger/0.1.7+function-triggers.TypeScript.HTTPTrigger.zip"
                 },
+                {
+                    "version": "0.2.0",
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.2.0+function-triggers.TypeScript.HTTPTrigger/0.2.0+function-triggers.TypeScript.HTTPTrigger.zip"
+                }
+            ]
+        },
+        "typescript": {
+            "HTTPTrigger": [
                 {
                     "version": "0.2.0",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.2.0+function-triggers.TypeScript.HTTPTrigger/0.2.0+function-triggers.TypeScript.HTTPTrigger.zip"
