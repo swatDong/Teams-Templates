@@ -135,6 +135,10 @@
         "JavaScript": {
             "default": [
                 {
+                    "version": "0.3.2+tab.JavaScript.default",
+                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.3.2+tab.JavaScript.default/0.3.2+tab.JavaScript.default.zip"
+                },
+                {
                     "version": "0.3.1+tab.JavaScript.default",
                     "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.3.1+tab.JavaScript.default/0.3.1+tab.JavaScript.default.zip"
                 },
