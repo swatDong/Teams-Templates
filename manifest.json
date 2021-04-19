@@ -4,23 +4,23 @@
             "default": [
                 {
                     "version": "0.1.0",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.1/function-base_JavaScript_default_0.1.0.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.1/function-base_JavaScript_default_0.1.0.zip"
                 },
                 {
                     "version": "0.1.1",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.4+function-base.JavaScript.default/0.1.4+function-base.JavaScript.default.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.4+function-base.JavaScript.default/0.1.4+function-base.JavaScript.default.zip"
                 },
                 {
                     "version": "0.1.2",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.6+function-base.JavaScript.default/0.1.6+function-base.JavaScript.default.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.6+function-base.JavaScript.default/0.1.6+function-base.JavaScript.default.zip"
                 },
                 {
                     "version": "0.1.7",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.7+function-base.JavaScript.default/0.1.7+function-base.JavaScript.default.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.7+function-base.JavaScript.default/0.1.7+function-base.JavaScript.default.zip"
                 },
                 {
                     "version": "0.2.0",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.2.0+function-base.JavaScript.default/0.2.0+function-base.JavaScript.default.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.2.0+function-base.JavaScript.default/0.2.0+function-base.JavaScript.default.zip"
                 }
             ]
         },
@@ -28,7 +28,7 @@
             "default": [
                 {
                     "version": "0.2.0",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.2.0+function-base.JavaScript.default/0.2.0+function-base.JavaScript.default.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.2.0+function-base.JavaScript.default/0.2.0+function-base.JavaScript.default.zip"
                 }
             ]
         },
@@ -36,15 +36,15 @@
             "default": [
                 {
                     "version": "0.1.6",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.6+function-base.TypeScript.default/0.1.6+function-base.TypeScript.default.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.6+function-base.TypeScript.default/0.1.6+function-base.TypeScript.default.zip"
                 },
                 {
                     "version": "0.1.7",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.7+function-base.TypeScript.default/0.1.7+function-base.TypeScript.default.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.7+function-base.TypeScript.default/0.1.7+function-base.TypeScript.default.zip"
                 },
                 {
                     "version": "0.2.0",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.2.0+function-base.TypeScript.default/0.2.0+function-base.TypeScript.default.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.2.0+function-base.TypeScript.default/0.2.0+function-base.TypeScript.default.zip"
                 }
             ]
         },
@@ -52,7 +52,7 @@
             "default": [
                 {
                     "version": "0.2.0",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.2.0+function-base.TypeScript.default/0.2.0+function-base.TypeScript.default.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.2.0+function-base.TypeScript.default/0.2.0+function-base.TypeScript.default.zip"
                 }
             ]
         },
@@ -60,7 +60,7 @@
             "default": [
                 {
                     "version": "0.1.0",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.1/function-base_CSharp_default_0.1.0.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.1/function-base_CSharp_default_0.1.0.zip"
                 }
             ]
         }
@@ -70,23 +70,23 @@
             "HTTPTrigger": [
                 {
                     "version": "0.1.0",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.1/function-triggers_JavaScript_HTTPTrigger_0.1.0.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.1/function-triggers_JavaScript_HTTPTrigger_0.1.0.zip"
                 },
                 {
                     "version": "0.1.1",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.5+function-triggers.JavaScript.HTTPTrigger/0.1.5+function-triggers.JavaScript.HTTPTrigger.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.5+function-triggers.JavaScript.HTTPTrigger/0.1.5+function-triggers.JavaScript.HTTPTrigger.zip"
                 },
                 {
                     "version": "0.1.6",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.6+function-triggers.JavaScript.HTTPTrigger/0.1.6+function-triggers.JavaScript.HTTPTrigger.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.6+function-triggers.JavaScript.HTTPTrigger/0.1.6+function-triggers.JavaScript.HTTPTrigger.zip"
                 },
                 {
                     "version": "0.1.7",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.7+function-triggers.JavaScript.HTTPTrigger/0.1.7+function-triggers.JavaScript.HTTPTrigger.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.7+function-triggers.JavaScript.HTTPTrigger/0.1.7+function-triggers.JavaScript.HTTPTrigger.zip"
                 },
                 {
                     "version": "0.2.0",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.2.0+function-triggers.JavaScript.HTTPTrigger/0.2.0+function-triggers.JavaScript.HTTPTrigger.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.2.0+function-triggers.JavaScript.HTTPTrigger/0.2.0+function-triggers.JavaScript.HTTPTrigger.zip"
                 }
             ]
         },
@@ -94,7 +94,7 @@
             "HTTPTrigger": [
                 {
                     "version": "0.2.0",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.2.0+function-triggers.JavaScript.HTTPTrigger/0.2.0+function-triggers.JavaScript.HTTPTrigger.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.2.0+function-triggers.JavaScript.HTTPTrigger/0.2.0+function-triggers.JavaScript.HTTPTrigger.zip"
                 }
             ]
         },
@@ -102,15 +102,15 @@
             "HTTPTrigger": [
                 {
                     "version": "0.1.6",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.6+function-triggers.TypeScript.HTTPTrigger/0.1.6+function-triggers.TypeScript.HTTPTrigger.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.6+function-triggers.TypeScript.HTTPTrigger/0.1.6+function-triggers.TypeScript.HTTPTrigger.zip"
                 },
                 {
                     "version": "0.1.7",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.7+function-triggers.TypeScript.HTTPTrigger/0.1.7+function-triggers.TypeScript.HTTPTrigger.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.7+function-triggers.TypeScript.HTTPTrigger/0.1.7+function-triggers.TypeScript.HTTPTrigger.zip"
                 },
                 {
                     "version": "0.2.0",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.2.0+function-triggers.TypeScript.HTTPTrigger/0.2.0+function-triggers.TypeScript.HTTPTrigger.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.2.0+function-triggers.TypeScript.HTTPTrigger/0.2.0+function-triggers.TypeScript.HTTPTrigger.zip"
                 }
             ]
         },
@@ -118,7 +118,7 @@
             "HTTPTrigger": [
                 {
                     "version": "0.2.0",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.2.0+function-triggers.TypeScript.HTTPTrigger/0.2.0+function-triggers.TypeScript.HTTPTrigger.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.2.0+function-triggers.TypeScript.HTTPTrigger/0.2.0+function-triggers.TypeScript.HTTPTrigger.zip"
                 }
             ]
         },
@@ -126,7 +126,7 @@
             "HTTPTrigger": [
                 {
                     "version": "0.1.0",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.1/function-triggers_CSharp_HTTPTrigger_0.1.0.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.1/function-triggers_CSharp_HTTPTrigger_0.1.0.zip"
                 }
             ]
         }
@@ -136,73 +136,73 @@
             "default": [
                 {
                     "version": "0.3.1+tab.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.3.1+tab.JavaScript.default/0.3.1+tab.JavaScript.default.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.3.1+tab.JavaScript.default/0.3.1+tab.JavaScript.default.zip"
                 },
                 {
                     "version": "0.3.0+tab.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.3.0+tab.JavaScript.default/0.3.0+tab.JavaScript.default.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.3.0+tab.JavaScript.default/0.3.0+tab.JavaScript.default.zip"
                 },
                 {
                     "version": "0.2.0+tab.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.2.0+tab.JavaScript.default/0.2.0+tab.JavaScript.default.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.2.0+tab.JavaScript.default/0.2.0+tab.JavaScript.default.zip"
                 },
                 {
                     "version": "0.1.5+tab.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.5+tab.JavaScript.default/0.1.5+tab.JavaScript.default.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.5+tab.JavaScript.default/0.1.5+tab.JavaScript.default.zip"
                 },
                 {
                     "version": "0.1.4+tab.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.4+tab.JavaScript.default/0.1.4+tab.JavaScript.default.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.4+tab.JavaScript.default/0.1.4+tab.JavaScript.default.zip"
                 },
                 {
                     "version": "0.1.3+tab.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.3+tab.JavaScript.default/0.1.3+tab.JavaScript.default.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.3+tab.JavaScript.default/0.1.3+tab.JavaScript.default.zip"
                 },
                 {
                     "version": "0.1.2+tab.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.2+tab.JavaScript.default/0.1.2+tab.JavaScript.default.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.2+tab.JavaScript.default/0.1.2+tab.JavaScript.default.zip"
                 },
                 {
                     "version": "0.1.1+tab.JavaScript.default",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.1+tab.JavaScript.default/0.1.1+tab.JavaScript.default.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.1+tab.JavaScript.default/0.1.1+tab.JavaScript.default.zip"
                 },
                 {
                     "version": "0.1.0",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.0.2/tab_JavaScript_default_0.1.0.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.2/tab_JavaScript_default_0.1.0.zip"
                 }
             ],
             "with-function": [
                 {
                     "version": "0.3.1+tab.JavaScript.with-function",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.3.1+tab.JavaScript.with-function/0.3.1+tab.JavaScript.with-function.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.3.1+tab.JavaScript.with-function/0.3.1+tab.JavaScript.with-function.zip"
                 },
                 {
                     "version": "0.3.0+tab.JavaScript.with-function",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.3.0+tab.JavaScript.with-function/0.3.0+tab.JavaScript.with-function.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.3.0+tab.JavaScript.with-function/0.3.0+tab.JavaScript.with-function.zip"
                 },
                 {
                     "version": "0.2.0+tab.JavaScript.with-function",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.2.0+tab.JavaScript.with-function/0.2.0+tab.JavaScript.with-function.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.2.0+tab.JavaScript.with-function/0.2.0+tab.JavaScript.with-function.zip"
                 },
                 {
                     "version": "0.1.7+tab.JavaScript.with-function",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.7+tab.JavaScript.with-function/0.1.7+tab.JavaScript.with-function.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.7+tab.JavaScript.with-function/0.1.7+tab.JavaScript.with-function.zip"
                 },
                 {
                     "version": "0.1.6+tab.JavaScript.with-function",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.6+tab.JavaScript.with-function/0.1.6+tab.JavaScript.with-function.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.6+tab.JavaScript.with-function/0.1.6+tab.JavaScript.with-function.zip"
                 },
                 {
                     "version": "0.1.4+tab.JavaScript.with-function",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.4+tab.JavaScript.with-function/0.1.4+tab.JavaScript.with-function.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.4+tab.JavaScript.with-function/0.1.4+tab.JavaScript.with-function.zip"
                 },
                 {
                     "version": "0.1.3+tab.JavaScript.with-function",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.3+tab.JavaScript.with-function/0.1.3+tab.JavaScript.with-function.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.3+tab.JavaScript.with-function/0.1.3+tab.JavaScript.with-function.zip"
                 },
                 {
                     "version": "0.1.2+tab.JavaScript.with-function",
-                    "url": "https://github.com/henzhang-ms/MODS-Templates/releases/download/0.1.2+tab.JavaScript.with-function/0.1.2+tab.JavaScript.with-function.zip"
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.2+tab.JavaScript.with-function/0.1.2+tab.JavaScript.with-function.zip"
                 }
             ]
         }
