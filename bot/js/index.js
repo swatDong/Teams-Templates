@@ -55,7 +55,7 @@ const userState = new UserState(memoryStorage);
 // Create the main dialog.
 const dialog = new MainDialog();
 // Create the bot that will handle incoming messages.
-const bot = new TeamsBot(conversationState, userState, dialog, memoryStorage);
+const bot = new TeamsBot(conversationState, userState, dialog);
 
 // Create HTTP server.
 const server = restify.createServer();
