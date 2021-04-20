@@ -12,7 +12,7 @@ if [[ ${RAW_TAG} == *"tab.JavaScript.default"* ]];then
 elif [[ ${RAW_TAG} == *"tab.JavaScript.with-function"* ]];then
     cd ./tab/js/with-function
     zip -r ../../../${RAW_TAG}.zip .
-if [[ ${RAW_TAG} == *"tab.TypeScript.default"* ]];then
+elif [[ ${RAW_TAG} == *"tab.TypeScript.default"* ]];then
     cd ./tab/ts/default
     zip -r ../../../${RAW_TAG}.zip .
 elif [[ ${RAW_TAG} == *"tab.TypeScript.with-function"* ]];then
