@@ -24,7 +24,7 @@ npm start
 Start debugging the project by hitting the `F5` key or click the debug icon in Visual Studio Code and click the `Start Debugging` green arrow button.
 
 ## Tests and manifest validation
-To check that your manifest is valid: 
+To check that your manifest is valid:
 ```
 npm run test
 ```
@@ -37,7 +37,7 @@ npm run deploy
 ```
 
 ## Publishing to Teams
-Once deployed, you may want to submit your application to your organization's internal app store. Your app will be submitted for admin approval with the following command.
+Once deployed, you may want to submit your application to your organization's internal app store. Your app will be submitted for admin approval with the following command:
 ```
 npm run publish-teams
 ```

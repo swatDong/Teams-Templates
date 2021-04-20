@@ -2,11 +2,9 @@
   "name": "teamsfx-template-tab",
   "version": "0.1.0",
   "private": true,
-  "devDependencies": {
-    "@fluentui/react-northstar": "^0.51.7"
-  },
   "dependencies": {
     "@microsoft/teams-js": "^1.6.0",
+    "@fluentui/react-northstar": "^0.51.7",
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
     "msteams-react-base-component": "^3.1.0",
