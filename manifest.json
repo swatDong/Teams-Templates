@@ -132,6 +132,14 @@
         }
     },
     "tab": {
+        "TypeScript": {
+            "default": [
+                {
+                    "version": "0.3.0+tab.TypeScript.default",
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.3.0+tab.TypeScript.default/0.3.0+tab.TypeScript.default.zip"
+                }
+            ]
+        },
         "JavaScript": {
             "default": [
                 {
