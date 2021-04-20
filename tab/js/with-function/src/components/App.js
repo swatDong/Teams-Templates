@@ -10,7 +10,7 @@ import Privacy from "./Privacy";
 import TermsOfUse from "./TermsOfUse";
 import Tab from "./Tab";
 import "./App.css";
-import TabConfig from "../../../default/src/components/Config";
+import TabConfig from "./TabConfig";
 
 /**
  * The main app which handles the initialization and routing
