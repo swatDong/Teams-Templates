@@ -12,6 +12,12 @@ if [[ ${RAW_TAG} == *"tab.JavaScript.default"* ]];then
 elif [[ ${RAW_TAG} == *"tab.JavaScript.with-function"* ]];then
     cd ./tab/js/with-function
     zip -r ../../../${RAW_TAG}.zip .
+if [[ ${RAW_TAG} == *"tab.TypeScript.default"* ]];then
+    cd ./tab/ts/default
+    zip -r ../../../${RAW_TAG}.zip .
+elif [[ ${RAW_TAG} == *"tab.TypeScript.with-function"* ]];then
+    cd ./tab/ts/with-function
+    zip -r ../../../${RAW_TAG}.zip .
 # function
 elif [[ ${RAW_TAG} == *"function-base.JavaScript.default"* ]];then
     cd ./function-base/js/default
@@ -44,7 +50,7 @@ elif [[ ${RAW_TAG} == *"msgext.JavaScript.default"* ]];then
 elif [[ ${RAW_TAG} == *"msgext.TypeScript.default"* ]];then
     cd ./msgext/ts
     zip -r ../../${RAW_TAG}.zip .
-else 
+else
     echo "Unknown tag ${RAW_TAG}"
 fi
 
