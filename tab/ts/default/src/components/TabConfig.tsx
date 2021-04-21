@@ -14,6 +14,9 @@ import * as microsoftTeams from "@microsoft/teams-js";
 class TabConfig extends React.Component {
 
     render() {
+        // Initialize the Microsoft Teams SDK
+        microsoftTeams.initialize();
+
         /**
          * When the user clicks "Save", save the url for your configured tab.
          * This allows for the addition of query string parameters based on
