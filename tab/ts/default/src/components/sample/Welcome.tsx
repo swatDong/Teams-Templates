@@ -53,7 +53,7 @@ export function Welcome(props: { showFunction?: boolean; environment?: string; }
           <EditCode showFunction={showFunction} />
           {isInTeams && <CurrentUser userName={userName} />}
           <Graph />
-          {showFunction && <AzureFunctions docsUrl={"https://aka.ms/teamsfx-azure-functions"} />}
+          {showFunction && <AzureFunctions />}
         </div>
       </div>
     </div>
