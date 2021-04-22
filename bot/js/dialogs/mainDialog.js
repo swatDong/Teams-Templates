@@ -17,7 +17,6 @@ const {
     OnBehalfOfUserCredential,
     TeamsBotSsoPrompt
 } = require("teamsdev-client");
-const { MemoryStorage } = require('botbuilder-core');
 
 class MainDialog extends LogoutDialog {
     constructor(dedupStorage) {
@@ -114,8 +113,10 @@ class MainDialog extends LogoutDialog {
     }
 
     async onEndDialog(context, instance, reason) {
-        await this.dedupStorage.delete(this.dedupStorageKeys);
-        this.dedupStorageKeys = [];
+        const conversationId = context.activity.conversation.id;
+        const currentDedupKeys = this.dedupStorageKeys.filter(key=>key.indexOf(conversationId) > 0);
+        await this.dedupStorage.delete(currentDedupKeys);
+        this.dedupStorageKeys = this.dedupStorageKeys.filter(key=>key.indexOf(conversationId) < 0);
     }
 
     // If a user is signed into multiple Teams clients, the Bot might receive a "signin/tokenExchange" from each client.
