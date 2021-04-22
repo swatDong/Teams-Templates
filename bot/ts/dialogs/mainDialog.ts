@@ -9,7 +9,7 @@ import {
   ResourceType,
   TeamsBotSsoPrompt,
   TeamsBotSsoPromptTokenResponse
-} from "@microsoft/teamsfx";
+} from "teamsdev-client";
 import * as axios from "axios";
 import "isomorphic-fetch";
 
