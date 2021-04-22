@@ -153,6 +153,10 @@
             ],
             "with-function":[
                 {
+                    "version": "0.4.0+tab.TypeScript.with-function",
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.4.0+tab.TypeScript.with-function/0.4.0+tab.TypeScript.with-function.zip"
+                },
+                {
                     "version": "0.3.1+tab.TypeScript.with-function",
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.3.1+tab.TypeScript.with-function/0.3.1+tab.TypeScript.with-function.zip"
                 },
