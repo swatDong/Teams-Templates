@@ -18,7 +18,7 @@ export class TeamsBot extends DialogBot {
         for (let cnt = 0; cnt < membersAdded.length; cnt++) {
           if (membersAdded[cnt].id !== context.activity.recipient.id) {
             await context.sendActivity(
-              "Welcome to TeamsBot. Type anything to get logged in. Type 'logout' to sign-out."
+              "Welcome to TeamsBot. Type 'login' to get logged in. Type 'logout' to sign-out."
             );
           }
         }

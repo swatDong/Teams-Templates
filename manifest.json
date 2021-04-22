@@ -151,7 +151,7 @@
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.3.0+tab.TypeScript.default/0.3.0+tab.TypeScript.default.zip"
                 }
             ],
-            "with-function":[
+            "with-function": [
                 {
                     "version": "0.4.0+tab.TypeScript.with-function",
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.4.0+tab.TypeScript.with-function/0.4.0+tab.TypeScript.with-function.zip"
@@ -303,6 +303,10 @@
                 {
                     "version": "0.0.28+bot.JavaScript.default",
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.28+bot.JavaScript.default/0.0.28+bot.JavaScript.default.zip"
+                },
+                {
+                    "version": "0.0.29+bot.JavaScript.default",
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.29+bot.JavaScript.default/0.0.29+bot.JavaScript.default.zip"
                 }
             ]
         },
@@ -311,6 +315,14 @@
                 {
                     "version": "0.0.18+bot.TypeScript.default",
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.18+bot.TypeScript.default/0.0.18+bot.TypeScript.default.zip"
+                },
+                {
+                    "version": "0.0.19+bot.TypeScript.default",
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.19+bot.TypeScript.default/0.0.19+bot.TypeScript.default.zip"
+                },
+                {
+                    "version": "0.0.20+bot.TypeScript.default",
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.20+bot.TypeScript.default/0.0.20+bot.TypeScript.default.zip"
                 }
             ]
         }

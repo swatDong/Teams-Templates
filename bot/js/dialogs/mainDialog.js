@@ -3,10 +3,11 @@
 
 const { DialogSet, DialogTurnStatus, WaterfallDialog } = require('botbuilder-dialogs');
 const { RootDialog } = require('./rootDialog');
+const { tokenExchangeOperationName } = require("botbuilder");
 
 const MAIN_DIALOG = 'MainDialog';
 const MAIN_WATERFALL_DIALOG = 'MainWaterfallDialog';
-const TEAMS_SSO_PROMPT_ID = "ModsSsoPrompt";
+const TEAMS_SSO_PROMPT_ID = "TeamsFxSsoPrompt";
 
 const { polyfills } = require('isomorphic-fetch');
 const {
@@ -17,7 +18,7 @@ const {
 } = require("teamsdev-client");
 
 class MainDialog extends RootDialog {
-    constructor() {
+    constructor(dedupStorage) {
         super(MAIN_DIALOG, process.env.connectionName);
         this.requiredScopes = ["User.Read"]; // hard code the scopes for demo purpose only
         loadConfiguration();
@@ -32,6 +33,8 @@ class MainDialog extends RootDialog {
         ]));
 
         this.initialDialogId = MAIN_WATERFALL_DIALOG;
+        this.dedupStorage = dedupStorage;
+        this.dedupStorageKeys = [];
     }
 
     /**
@@ -92,6 +95,61 @@ class MainDialog extends RootDialog {
 
         await stepContext.context.sendActivity("Login was not successful please try again.");
         return await stepContext.endDialog();
+    }
+
+    async onEndDialog(context, instance, reason) {
+        const conversationId = context.activity.conversation.id;
+        const currentDedupKeys = this.dedupStorageKeys.filter(key=>key.indexOf(conversationId) > 0);
+        await this.dedupStorage.delete(currentDedupKeys);
+        this.dedupStorageKeys = this.dedupStorageKeys.filter(key=>key.indexOf(conversationId) < 0);
+    }
+
+    // If a user is signed into multiple Teams clients, the Bot might receive a "signin/tokenExchange" from each client.
+    // Each token exchange request for a specific user login will have an identical activity.value.Id.
+    // Only one of these token exchange requests should be processed by the bot.  For a distributed bot in production,
+    // this requires a distributed storage to ensure only one token exchange is processed.
+    async shouldDedup(context) {
+        const storeItem = {
+            eTag: context.activity.value.id,
+        };
+
+        const key = this.getStorageKey(context);
+        const storeItems = { [key]: storeItem };
+
+        try {
+            await this.dedupStorage.write(storeItems);
+            this.dedupStorageKeys.push(key);
+        } catch (err) {
+            if (err instanceof Error && err.message.indexOf("eTag conflict")) {
+                return true;
+            }
+            throw err;
+        }
+        return false;
+    }
+
+    getStorageKey(context) {
+        if (!context || !context.activity || !context.activity.conversation) {
+            throw new Error("Invalid context, can not get storage key!");
+        }
+        const activity = context.activity;
+        const channelId = activity.channelId;
+        const conversationId = activity.conversation.id;
+        if (
+            activity.type !== ActivityTypes.Invoke ||
+            activity.name !== tokenExchangeOperationName
+        ) {
+            throw new Error(
+                "TokenExchangeState can only be used with Invokes of signin/tokenExchange."
+            );
+        }
+        const value = activity.value;
+        if (!value || !value.id) {
+            throw new Error(
+                "Invalid signin/tokenExchange. Missing activity.value.id."
+            );
+        }
+        return `${channelId}/${conversationId}/${value.id}`;
     }
 }
 
