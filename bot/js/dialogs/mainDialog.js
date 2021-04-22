@@ -1,10 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-const { ConfirmPrompt, DialogSet, DialogTurnStatus, WaterfallDialog } = require('botbuilder-dialogs');
-const { LogoutDialog } = require('./logoutDialog');
+const { DialogSet, DialogTurnStatus, WaterfallDialog } = require('botbuilder-dialogs');
+const { RootDialog } = require('./rootDialog');
 
-const CONFIRM_PROMPT = 'ConfirmPrompt';
 const MAIN_DIALOG = 'MainDialog';
 const MAIN_WATERFALL_DIALOG = 'MainWaterfallDialog';
 const TEAMS_SSO_PROMPT_ID = "ModsSsoPrompt";
@@ -17,7 +16,7 @@ const {
     TeamsBotSsoPrompt
 } = require("teamsdev-client");
 
-class MainDialog extends LogoutDialog {
+class MainDialog extends RootDialog {
     constructor() {
         super(MAIN_DIALOG, process.env.connectionName);
         this.requiredScopes = ["User.Read"]; // hard code the scopes for demo purpose only
@@ -26,10 +25,10 @@ class MainDialog extends LogoutDialog {
             scopes: this.requiredScopes,
             endOnInvalidMessage: true
         }));
-        this.addDialog(new ConfirmPrompt(CONFIRM_PROMPT));
+
         this.addDialog(new WaterfallDialog(MAIN_WATERFALL_DIALOG, [
-            this.promptStep.bind(this),
-            this.callApi.bind(this)
+            this.ssoStep.bind(this),
+            this.showUserInfo.bind(this)
         ]));
 
         this.initialDialogId = MAIN_WATERFALL_DIALOG;
@@ -39,6 +38,7 @@ class MainDialog extends LogoutDialog {
      * The run method handles the incoming activity (in the form of a DialogContext) and passes it through the dialog system.
      * If no dialog is active, it will start the default dialog.
      * @param {*} dialogContext
+     * @param {*} accessor
      */
     async run(context, accessor) {
         const dialogSet = new DialogSet(accessor);
@@ -50,7 +50,7 @@ class MainDialog extends LogoutDialog {
         }
     }
 
-    async promptStep(stepContext) {
+    async ssoStep(stepContext) {
         try {
             return await stepContext.beginDialog(TEAMS_SSO_PROMPT_ID);
         } catch (err) {
@@ -59,7 +59,7 @@ class MainDialog extends LogoutDialog {
     }
 
 
-    async callApi(stepContext) {
+    async showUserInfo(stepContext) {
         // Get token response
         const tokenResponse = stepContext.result;
 
@@ -87,21 +87,6 @@ class MainDialog extends LogoutDialog {
                 await stepContext.context.sendActivity("Getting profile from Microsoft Graph failed! ");
             }
 
-            // Call API hosted in Azure Functions on behalf of user
-            // const apiConfig = getResourceConfiguration(ResourceType.API);
-
-            // const url = apiConfig.endpoint.replace(/\/$/, "");
-            // const response = await axios.default.get(url, {
-            //     headers: {
-            //         authorization: "Bearer " + tokenResponse.ssoToken
-            //     }
-            // });
-            // await stepContext.context.sendActivity(
-            //     "Call API hosted in Azure Functions on behalf of user. API endpoint: " + apiConfig.endpoint
-            // );
-            // await stepContext.context.sendActivity("Response.data: " + JSON.stringify(response.data));
-
-            // console.log(response);
             return await stepContext.endDialog();
         }
 

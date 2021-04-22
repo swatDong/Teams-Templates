@@ -27,32 +27,12 @@ class DialogBot extends TeamsActivityHandler {
         this.dialogState = this.conversationState.createProperty('DialogState');
 
         this.onMessage(async (context, next) => {
-            switch (context.activity.text) {
-                case 'login':
-                case 'logout': {
-                    console.log('Running dialog with Message Activity.');
+            console.log('Running dialog with Message Activity.');
 
-                    // Run the Dialog with the new message Activity.
-                    await this.dialog.run(context, this.dialogState);
+            // Run the Dialog with the new message Activity.
+            await this.dialog.run(context, this.dialogState);
 
-                    break;
-                }
-                default: {
-                    const value = { count: 0 };
-                    const card = CardFactory.heroCard(
-                        'Lets talk...',
-                        null,
-                        [{
-                            type: ActionTypes.MessageBack,
-                            title: 'Say Hello',
-                            value: value,
-                            text: 'Hello'
-                        }]);
-                    await context.sendActivity({ attachments: [card] });
-                    break;
-                }
-            }
-
+            // By calling next() you ensure that the next BotHandler is run.
             await next();
         });
     }

@@ -19,7 +19,11 @@ class TeamsBot extends DialogBot {
             const membersAdded = context.activity.membersAdded;
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
-                    await context.sendActivity('Welcome to TeamsBot. Type \'login\' to get logged in. Type \'logout\' to sign-out.');
+                    const welcomeMsg = MessageFactory.text(`Congratulations! ${username}, your hello world Bot 
+                    template is running. This bot will introduce you how to build bot using Microsoft Teams App Framework(TeamsFx). 
+                    You can reply ‘intro’ to see the introduction card. TeamsFx helps you build Bot using [Bot Framework SDK](https://dev.botframework.com/)`);
+                    welcomeMsg.textFormat = 'markdown';
+                    await stepContext.context.sendActivity(welcomeMsg);
                 }
             }
 
