@@ -19,21 +19,21 @@ export function useTeamsFx() {
   const { error, loading } = useData(async () => {
     if (!initialized) {
       loadConfiguration({
-      authentication: {
-        initiateLoginEndpoint: startLoginPageUrl,
-        simpleAuthEndpoint: teamsfxEndpoint,
-        clientId: clientId,
-      },
-      resources: [
-        {
-          type: ResourceType.API,
-          name: "default",
-          properties: {
-            endpoint: functionEndpoint,
+        authentication: {
+          initiateLoginEndpoint: startLoginPageUrl,
+          simpleAuthEndpoint: teamsfxEndpoint,
+          clientId: clientId,
+        },
+        resources: [
+          {
+            type: ResourceType.API,
+            name: "default",
+            properties: {
+              endpoint: functionEndpoint,
+            }
           }
-        }
-      ]
-    });
+        ]
+      });
       initialized = true;
     }
   });
