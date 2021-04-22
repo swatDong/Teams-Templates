@@ -20,7 +20,7 @@ const {
 const { MemoryStorage } = require('botbuilder-core');
 
 class MainDialog extends LogoutDialog {
-    constructor() {
+    constructor(dedupStorage) {
         super(MAIN_DIALOG, process.env.connectionName);
         this.requiredScopes = ["User.Read"]; // hard code the scopes for demo purpose only
         loadConfiguration();
@@ -35,7 +35,8 @@ class MainDialog extends LogoutDialog {
         ]));
 
         this.initialDialogId = MAIN_WATERFALL_DIALOG;
-        this.dedupStorage = new MemoryStorage();
+        this.dedupStorage = dedupStorage;
+        this.dedupStorageKeys = [];
     }
 
     /**
@@ -113,7 +114,8 @@ class MainDialog extends LogoutDialog {
     }
 
     async onEndDialog(context, instance, reason) {
-        this.dedupStorage = new MemoryStorage();
+        await this.dedupStorage.delete(this.dedupStorageKeys);
+        this.dedupStorageKeys = [];
     }
 
     // If a user is signed into multiple Teams clients, the Bot might receive a "signin/tokenExchange" from each client.
@@ -124,10 +126,13 @@ class MainDialog extends LogoutDialog {
         const storeItem = {
             eTag: context.activity.value.id,
         };
-        const storeItems = { [this.getStorageKey(context)]: storeItem };
+
+        const key = this.getStorageKey(context);
+        const storeItems = { [key]: storeItem };
 
         try {
             await this.dedupStorage.write(storeItems);
+            this.dedupStorageKeys.push(key);
         } catch (err) {
             if (err instanceof Error && err.message.indexOf("eTag conflict")) {
                 return true;
