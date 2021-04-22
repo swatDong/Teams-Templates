@@ -12,9 +12,8 @@ class TeamsBot extends DialogBot {
      * @param {UserState} userState
      * @param {Dialog} dialog
      */
-    constructor(conversationState, userState, dialog, storage) {
+    constructor(conversationState, userState, dialog) {
         super(conversationState, userState, dialog);
-        this.storage = storage;
         this.onMembersAdded(async (context, next) => {
             const membersAdded = context.activity.membersAdded;
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
@@ -48,56 +47,11 @@ class TeamsBot extends DialogBot {
             context.activity &&
             context.activity.name === tokenExchangeOperationName
         ) {
-            if (await this.shouldDedup(context)) {
+            if (await this.dialog.shouldDedup(context)) {
                 return;
             }
         }
         await this.dialog.run(context, this.dialogState);
-    }
-
-    // If a user is signed into multiple Teams clients, the Bot might receive a "signin/tokenExchange" from each client.
-    // Each token exchange request for a specific user login will have an identical activity.value.Id.
-    // Only one of these token exchange requests should be processed by the bot.  For a distributed bot in production,
-    // this requires a distributed storage to ensure only one token exchange is processed.
-    async shouldDedup(context) {
-        const storeItem = {
-            eTag: context.activity.value.id,
-        };
-        const storeItems = { [this.getStorageKey(context)]: storeItem };
-
-        try {
-            await this.storage.write(storeItems);
-        } catch (err) {
-            if (err instanceof Error && err.message.indexOf("eTag conflict")) {
-                return true;
-            }
-            throw err;
-        }
-        return false;
-    }
-
-    getStorageKey(context) {
-        if (!context || !context.activity || !context.activity.conversation) {
-            throw new Error("Invalid context, can not get storage key!");
-        }
-        const activity = context.activity;
-        const channelId = activity.channelId;
-        const conversationId = activity.conversation.id;
-        if (
-            activity.type !== ActivityTypes.Invoke ||
-            activity.name !== tokenExchangeOperationName
-        ) {
-            throw new Error(
-                "TokenExchangeState can only be used with Invokes of signin/tokenExchange."
-            );
-        }
-        const value = activity.value;
-        if (!value || !value.id) {
-            throw new Error(
-                "Invalid signin/tokenExchange. Missing activity.value.id."
-            );
-        }
-        return `${channelId}/${conversationId}/${value.id}`;
     }
 }
 
