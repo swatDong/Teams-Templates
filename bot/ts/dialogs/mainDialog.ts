@@ -16,7 +16,7 @@ import "isomorphic-fetch";
 const CONFIRM_PROMPT = "ConfirmPrompt";
 const MAIN_DIALOG = "MainDialog";
 const MAIN_WATERFALL_DIALOG = "MainWaterfallDialog";
-const TEAMS_SSO_PROMPT_ID = "ModsSsoPrompt";
+const TEAMS_SSO_PROMPT_ID = "TeamsFxSsoPrompt";
 
 export class MainDialog extends LogoutDialog {
   private requiredScopes: string[] = ["User.Read"]; // hard code the scopes for demo purpose only
