@@ -3,7 +3,7 @@
 
 const { DialogSet, DialogTurnStatus, WaterfallDialog, ConfirmPrompt } = require('botbuilder-dialogs');
 const { RootDialog } = require('./rootDialog');
-const { tokenExchangeOperationName, ActivityTypes } = require("botbuilder");
+const { tokenExchangeOperationName, ActivityTypes, CardFactory } = require("botbuilder");
 
 const CONFIRM_PROMPT = 'ConfirmPrompt';
 const MAIN_DIALOG = 'MainDialog';
@@ -17,6 +17,7 @@ const {
     OnBehalfOfUserCredential,
     TeamsBotSsoPrompt
 } = require("teamsdev-client");
+const { ResponseType } = require('@microsoft/microsoft-graph-client');
 
 class MainDialog extends RootDialog {
     constructor(dedupStorage) {
@@ -30,8 +31,6 @@ class MainDialog extends RootDialog {
         this.addDialog(new ConfirmPrompt(CONFIRM_PROMPT));
         this.addDialog(new WaterfallDialog(MAIN_WATERFALL_DIALOG, [
             this.ssoStep.bind(this),
-            this.showInfoPrompt.bind(this),
-            this.ensureOAuth.bind(this),
             this.showUserInfo.bind(this)
         ]));
 
@@ -57,46 +56,11 @@ class MainDialog extends RootDialog {
     }
 
     async ssoStep(stepContext) {
-        try {
-            return await stepContext.beginDialog(TEAMS_SSO_PROMPT_ID);
-        } catch (err) {
-            console.error(err);
-        }
+        return await stepContext.beginDialog(TEAMS_SSO_PROMPT_ID);
     }
-
-    async showInfoPrompt(stepContext) {
-        // Get the token from the previous step.
-        const tokenResponse = stepContext.result;
-        if (tokenResponse) {
-            return await stepContext.prompt(CONFIRM_PROMPT, 'You are now logged in. Would you like to view your token?');
-        }
-        await stepContext.context.sendActivity('Login was not successful please try again.');
-        return await stepContext.endDialog();
-    }
-
-    async ensureOAuth(stepContext) {
-        await stepContext.context.sendActivity('Thank you.');
-
-        const result = stepContext.result;
-        if (result) {
-            // Call the prompt again because we need the token. The reasons for this are:
-            // 1. If the user is already logged in we do not need to store the token locally in the bot and worry
-            // about refreshing it. We can always just call the prompt again to get the token.
-            // 2. We never know how long it will take a user to respond. By the time the
-            // user responds the token may have expired. The user would then be prompted to login again.
-            //
-            // There is no reason to store the token locally in the bot because we can always just call
-            // the OAuth prompt to get the token or get a new token if needed.
-            return await stepContext.beginDialog(TEAMS_SSO_PROMPT_ID);
-        }
-        return await stepContext.endDialog();
-    }
-
 
     async showUserInfo(stepContext) {
-        // Get token response
         const tokenResponse = stepContext.result;
-
         if (tokenResponse) {
             await stepContext.context.sendActivity("Call Microsoft Graph on behalf of user...");
 
@@ -108,11 +72,11 @@ class MainDialog extends RootDialog {
                 await stepContext.context.sendActivity(`You're logged in as ${me.displayName} (${me.userPrincipalName}); your job title is: ${me.jobTitle}.`);
 
                 // show user picture
-                var photoBinary = await graphClient.api("/me/photo/$value").get();
+                var photoBinary = await graphClient.api("/me/photo/$value").responseType(ResponseType.ARRAYBUFFER).get();
                 //const photoBuffer =await photoResponse.arrayBuffer();
                 const buffer = Buffer.from(photoBinary);
                 const imageUri = 'data:image/png;base64,' + buffer.toString('base64');
-                const card = CardFactory.thumbnailCard("", CardFactory.images([imageUri]));
+                const card = CardFactory.thumbnailCard("User Picture", CardFactory.images([imageUri]));
                 await stepContext.context.sendActivity({ attachments: [card] });
             }
             else {
@@ -128,9 +92,9 @@ class MainDialog extends RootDialog {
 
     async onEndDialog(context, instance, reason) {
         const conversationId = context.activity.conversation.id;
-        const currentDedupKeys = this.dedupStorageKeys.filter(key=>key.indexOf(conversationId) > 0);
+        const currentDedupKeys = this.dedupStorageKeys.filter(key => key.indexOf(conversationId) > 0);
         await this.dedupStorage.delete(currentDedupKeys);
-        this.dedupStorageKeys = this.dedupStorageKeys.filter(key=>key.indexOf(conversationId) < 0);
+        this.dedupStorageKeys = this.dedupStorageKeys.filter(key => key.indexOf(conversationId) < 0);
     }
 
     // If a user is signed into multiple Teams clients, the Bot might receive a "signin/tokenExchange" from each client.

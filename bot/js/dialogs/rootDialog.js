@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 const { ComponentDialog } = require('botbuilder-dialogs');
-const { MessageFactory, TurnContext } = require('botbuilder');
+const { MessageFactory, TurnContext, ActionTypes, CardFactory } = require('botbuilder');
 
 class RootDialog extends ComponentDialog {
     constructor(id, connectionName) {
@@ -30,35 +30,42 @@ class RootDialog extends ComponentDialog {
 
     async interrupt(innerDc) {
         const removedMentionText = TurnContext.removeRecipientMention(innerDc.context.activity, innerDc.context.activity.recipient.id);
-        if (removedMentionText) {
-            const text = removedMentionText.toLowerCase().replace(/\n|\r/g, '');    // Remove the line break           
-            switch (text) {
-                case 'logout': {
-                    // The bot adapter encapsulates the authentication processes.
-                    const botAdapter = innerDc.context.adapter;
-                    await botAdapter.signOutUser(innerDc.context, this.connectionName);
-                    await innerDc.context.sendActivity('You have been signed out.');
-                    return await innerDc.cancelAllDialogs();
-                }
-                case 'login':
-                    break;
-                case 'intro': {
-                    const introMessage = MessageFactory.text(`This Bot has implemented single sign-on (SSO) using Teams Account 
-                            which user logged in Teams client, check [TeamsFx authentication document](placeholder) 
-                            and code in \`bot/dialogs/mainDialog.js\` to learn more about SSO.
-                            Type \`log out\` to try log out the bot. And type \`log in\` to log in again. 
-                            To learn more about building Bot using Microsoft Teams App Framework(TeamsFx), please refer to the [document](placeholder).`);
-                    introMessage.textFormat = 'markdown';
-                    await innerDc.context.sendActivity(introMessage);
-                    return await innerDc.cancelAllDialogs();
-                }
-                default: {
-                    await innerDc.context.sendActivity(`This is a hello world Bot built by Microsoft Teams App Framework(TeamsFx), 
-                            which is designed only for illustration Bot purpose. This Bot by default will not handle any specific question or task. 
-                            Please type \`intro\` to see the introduction card.`);
-                    return await innerDc.cancelAllDialogs();
-                }
+        const text = removedMentionText?.toLowerCase().replace(/\n|\r/g, '');    // Remove the line break           
+        switch (text) {
+            case 'show':
+                break;
+            case 'intro': {
+                const cardButtons = [{ type: ActionTypes.ImBack, title: 'Show Profile', value: 'show' }];
+                const card = CardFactory.heroCard(
+                    'Introduction',
+                    null,
+                    cardButtons,
+                    {
+                        text: `This Bot has implemented single sign-on (SSO) using Teams Account 
+                            which user logged in Teams client, check <a href=\"placeholder\">TeamsFx authentication document</a> 
+                            and code in <pre>bot/dialogs/mainDialog.js</pre> to learn more about SSO.
+                            Type <strong>show</strong> or click the button below to show your profile by calling Microsoft Graph API with SSO.
+                            To learn more about building Bot using Microsoft Teams App Framework(TeamsFx), please refer to the <a href=\"placeholder\">TeamsFx document</a> .`
+                    });
+
+                await innerDc.context.sendActivity({ attachments: [card] });
+                return await innerDc.cancelAllDialogs();
             }
+            default: {
+                const cardButtons = [{ type: ActionTypes.ImBack, title: 'Show introduction card', value: 'intro' }];
+                const card = CardFactory.heroCard(
+                    '',
+                    null,
+                    cardButtons,
+                    {
+                        text: `This is a hello world Bot built by Microsoft Teams App Framework(TeamsFx), 
+                            which is designed only for illustration Bot purpose. This Bot by default will not handle any specific question or task. 
+                            Please type <strong>intro</strong> to see the introduction card.`
+                    });
+                await innerDc.context.sendActivity({ attachments: [card] });
+                return await innerDc.cancelAllDialogs();
+            }
+
 
         }
     }
