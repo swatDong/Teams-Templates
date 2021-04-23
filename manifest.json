@@ -3,18 +3,6 @@
         "JavaScript": {
             "default": [
                 {
-                    "version": "0.1.0",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.1/function-base_JavaScript_default_0.1.0.zip"
-                },
-                {
-                    "version": "0.1.1",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.4+function-base.JavaScript.default/0.1.4+function-base.JavaScript.default.zip"
-                },
-                {
-                    "version": "0.1.2",
-                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.6+function-base.JavaScript.default/0.1.6+function-base.JavaScript.default.zip"
-                },
-                {
                     "version": "0.1.7",
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.1.7+function-base.JavaScript.default/0.1.7+function-base.JavaScript.default.zip"
                 },
@@ -29,6 +17,10 @@
                 {
                     "version": "0.2.0",
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.2.0+function-base.JavaScript.default/0.2.0+function-base.JavaScript.default.zip"
+                },
+                {
+                    "version": "0.2.1",
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.2.1+function-base.JavaScript.default/0.2.1+function-base.JavaScript.default.zip"
                 }
             ]
         },
