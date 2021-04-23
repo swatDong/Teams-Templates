@@ -79,6 +79,10 @@
                 {
                     "version": "0.2.0",
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.2.0+function-triggers.JavaScript.HTTPTrigger/0.2.0+function-triggers.JavaScript.HTTPTrigger.zip"
+                },
+                {
+                    "version": "0.2.1",
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.2.1+function-triggers.JavaScript.HTTPTrigger/0.2.1+function-triggers.JavaScript.HTTPTrigger.zip"
                 }
             ]
         },
@@ -103,6 +107,10 @@
                 {
                     "version": "0.2.0",
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.2.0+function-triggers.TypeScript.HTTPTrigger/0.2.0+function-triggers.TypeScript.HTTPTrigger.zip"
+                },
+                {
+                    "version": "0.2.1",
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.2.1+function-triggers.TypeScript.HTTPTrigger/0.2.1+function-triggers.TypeScript.HTTPTrigger.zip"
                 }
             ]
         },
