@@ -1,9 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-const { TeamsActivityHandler, tokenExchangeOperationName } = require("botbuilder");
-const { DialogBot } = require("./dialogBot");
-
+const { TeamsActivityHandler, tokenExchangeOperationName, MessageFactory } = require("botbuilder");
 
 class TeamsBot extends TeamsActivityHandler {
     /**
@@ -15,13 +13,13 @@ class TeamsBot extends TeamsActivityHandler {
     constructor(conversationState, userState, dialog) {
         super();
         if (!conversationState) {
-            throw new Error('[DialogBot]: Missing parameter. conversationState is required');
+            throw new Error('[TeamsBot]: Missing parameter. conversationState is required');
         }
         if (!userState) {
-            throw new Error('[DialogBot]: Missing parameter. userState is required');
+            throw new Error('[TeamsBot]: Missing parameter. userState is required');
         }
         if (!dialog) {
-            throw new Error('[DialogBot]: Missing parameter. dialog is required');
+            throw new Error('[TeamsBot]: Missing parameter. dialog is required');
         }
         this.conversationState = conversationState;
         this.userState = userState;

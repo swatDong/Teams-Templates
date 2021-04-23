@@ -11,7 +11,7 @@ const path = require('path');
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
 const { BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } = require('botbuilder');
 
-const { TeamsBot } = require('./bots/teamsBot');
+const { TeamsBot } = require('./teamsBot');
 const { MainDialog } = require('./dialogs/mainDialog');
 
 // Create adapter.
