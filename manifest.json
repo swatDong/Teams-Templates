@@ -135,6 +135,10 @@
         "TypeScript": {
             "default": [
                 {
+                    "version": "0.4.1+tab.TypeScript.default",
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.4.1+tab.TypeScript.default/0.4.1+tab.TypeScript.default.zip"
+                },
+                {
                     "version": "0.4.0+tab.TypeScript.default",
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.4.0+tab.TypeScript.default/0.4.0+tab.TypeScript.default.zip"
                 },
@@ -323,6 +327,10 @@
                 {
                     "version": "0.0.20+bot.TypeScript.default",
                     "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.20+bot.TypeScript.default/0.0.20+bot.TypeScript.default.zip"
+                },
+                {
+                    "version": "0.0.21+bot.TypeScript.default",
+                    "url": "https://github.com/henzhang-ms/Teams-Templates/releases/download/0.0.21+bot.TypeScript.default/0.0.21+bot.TypeScript.default.zip"
                 }
             ]
         }
