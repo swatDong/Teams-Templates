@@ -1,6 +1,6 @@
 import { ConfirmPrompt, DialogSet, DialogTurnStatus, WaterfallDialog } from "botbuilder-dialogs";
 import { LogoutDialog } from "./logoutDialog";
-import { TurnContext } from "botbuilder";
+import { TurnContext, MemoryStorage, ActivityTypes, tokenExchangeOperationName } from "botbuilder";
 import {
   createMicrosoftGraphClient,
   getResourceConfiguration,
@@ -20,10 +20,12 @@ const TEAMS_SSO_PROMPT_ID = "ModsSsoPrompt";
 
 export class MainDialog extends LogoutDialog {
   private requiredScopes: string[] = ["User.Read"]; // hard code the scopes for demo purpose only
+  private dedupStorage: MemoryStorage;
+  private dedupStorageKeys: string[];
 
   // Developer controlls the lifecycle of credential provider, as well as the cache in it.
   // In this sample the provider is shared in all conversations
-  constructor() {
+  constructor(dedupStorage: MemoryStorage) {
     super(MAIN_DIALOG, process.env.connectionName);
     loadConfiguration();
     this.addDialog(
@@ -42,6 +44,9 @@ export class MainDialog extends LogoutDialog {
     );
 
     this.initialDialogId = MAIN_WATERFALL_DIALOG;
+
+    this.dedupStorage = dedupStorage;
+    this.dedupStorageKeys = [];
   }
 
   /**
@@ -117,5 +122,60 @@ export class MainDialog extends LogoutDialog {
 
     await stepContext.context.sendActivity("Login was not successful please try again.");
     return await stepContext.endDialog();
+  }
+
+  async onEndDialog(context: TurnContext) {
+    const conversationId = context.activity.conversation.id;
+    const currentDedupKeys = this.dedupStorageKeys.filter(key=>key.indexOf(conversationId) > 0);
+    await this.dedupStorage.delete(currentDedupKeys);
+    this.dedupStorageKeys = this.dedupStorageKeys.filter(key=>key.indexOf(conversationId) < 0);
+  }
+
+  // If a user is signed into multiple Teams clients, the Bot might receive a "signin/tokenExchange" from each client.
+  // Each token exchange request for a specific user login will have an identical activity.value.Id.
+  // Only one of these token exchange requests should be processed by the bot.  For a distributed bot in production,
+  // this requires a distributed storage to ensure only one token exchange is processed.
+  async shouldDedup(context: TurnContext): Promise<boolean> {
+    const storeItem = {
+      eTag: context.activity.value.id,
+    };
+
+    const key = this.getStorageKey(context);
+    const storeItems = { [key]: storeItem };
+
+    try {
+      await this.dedupStorage.write(storeItems);
+      this.dedupStorageKeys.push(key);
+    } catch (err) {
+      if (err instanceof Error && err.message.indexOf("eTag conflict")) {
+        return true;
+      }
+      throw err;
+    }
+    return false;
+  }
+
+  getStorageKey(context: TurnContext): string {
+    if (!context || !context.activity || !context.activity.conversation) {
+      throw new Error("Invalid context, can not get storage key!");
+    }
+    const activity = context.activity;
+    const channelId = activity.channelId;
+    const conversationId = activity.conversation.id;
+    if (
+      activity.type !== ActivityTypes.Invoke ||
+      activity.name !== tokenExchangeOperationName
+    ) {
+      throw new Error(
+        "TokenExchangeState can only be used with Invokes of signin/tokenExchange."
+      );
+    }
+    const value = activity.value;
+    if (!value || !value.id) {
+      throw new Error(
+        "Invalid signin/tokenExchange. Missing activity.value.id."
+      );
+    }
+    return `${channelId}/${conversationId}/${value.id}`;
   }
 }
