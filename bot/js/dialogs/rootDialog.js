@@ -5,9 +5,8 @@ const { ComponentDialog } = require('botbuilder-dialogs');
 const { TurnContext, ActionTypes, CardFactory } = require('botbuilder');
 
 class RootDialog extends ComponentDialog {
-    constructor(id, connectionName) {
+    constructor(id) {
         super(id);
-        this.connectionName = connectionName;
     }
 
     async onBeginDialog(innerDc, options) {

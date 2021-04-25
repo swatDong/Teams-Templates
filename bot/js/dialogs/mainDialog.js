@@ -20,7 +20,7 @@ const { ResponseType } = require('@microsoft/microsoft-graph-client');
 
 class MainDialog extends RootDialog {
     constructor(dedupStorage) {
-        super(MAIN_DIALOG, "");
+        super(MAIN_DIALOG);
         this.requiredScopes = ["User.Read"]; // hard code the scopes for demo purpose only
         loadConfiguration();
         this.addDialog(new TeamsBotSsoPrompt(TEAMS_SSO_PROMPT_ID, {
