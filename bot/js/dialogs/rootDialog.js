@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 const { ComponentDialog } = require('botbuilder-dialogs');
-const { MessageFactory, TurnContext, ActionTypes, CardFactory } = require('botbuilder');
+const { TurnContext, ActionTypes, CardFactory } = require('botbuilder');
 
 class RootDialog extends ComponentDialog {
     constructor(id, connectionName) {
@@ -11,7 +11,7 @@ class RootDialog extends ComponentDialog {
     }
 
     async onBeginDialog(innerDc, options) {
-        const result = await this.interrupt(innerDc);
+        const result = await this.triggerCommand(innerDc);
         if (result) {
             return result;
         }
@@ -20,15 +20,10 @@ class RootDialog extends ComponentDialog {
     }
 
     async onContinueDialog(innerDc) {
-        const result = await this.interrupt(innerDc);
-        if (result) {
-            return result;
-        }
-
         return await super.onContinueDialog(innerDc);
     }
 
-    async interrupt(innerDc) {
+    async triggerCommand(innerDc) {
         const removedMentionText = TurnContext.removeRecipientMention(innerDc.context.activity, innerDc.context.activity.recipient.id);
         const text = removedMentionText?.toLowerCase().replace(/\n|\r/g, '');    // Remove the line break           
         switch (text) {
@@ -65,8 +60,6 @@ class RootDialog extends ComponentDialog {
                 await innerDc.context.sendActivity({ attachments: [card] });
                 return await innerDc.cancelAllDialogs();
             }
-
-
         }
     }
 }

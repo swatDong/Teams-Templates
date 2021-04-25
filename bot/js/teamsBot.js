@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-const { TeamsActivityHandler, tokenExchangeOperationName, MessageFactory } = require("botbuilder");
+const { TeamsActivityHandler, tokenExchangeOperationName, ActionTypes, CardFactory} = require("botbuilder");
 
 class TeamsBot extends TeamsActivityHandler {
     /**
@@ -40,14 +40,19 @@ class TeamsBot extends TeamsActivityHandler {
             const membersAdded = context.activity.membersAdded;
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
-                    const welcomeMsg = MessageFactory.text(`Congratulations! ${username}, your hello world Bot 
-                    template is running. This bot will introduce you how to build bot using Microsoft Teams App Framework(TeamsFx). 
-                    You can reply ‘intro’ to see the introduction card. TeamsFx helps you build Bot using [Bot Framework SDK](https://dev.botframework.com/)`);
-                    welcomeMsg.textFormat = 'markdown';
-                    await stepContext.context.sendActivity(welcomeMsg);
+                    const cardButtons = [{ type: ActionTypes.ImBack, title: 'Show introduction card', value: 'intro' }];
+                    const card = CardFactory.heroCard(
+                        'Welcome',
+                        null,
+                        cardButtons,
+                        {
+                            text: `Congratulations! Your hello world Bot 
+                            template is running. This bot will introduce you how to build bot using Microsoft Teams App Framework(TeamsFx). 
+                            You can reply <strong>intro</strong> to see the introduction card. TeamsFx helps you build Bot using <a href=\"https://dev.botframework.com/\">Bot Framework SDK</a>`
+                        });
+                    await context.sendActivity({ attachments: [card] });
                 }
             }
-
             await next();
         });
     }
