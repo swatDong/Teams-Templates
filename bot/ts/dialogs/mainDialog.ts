@@ -3,12 +3,15 @@ import { LogoutDialog } from "./logoutDialog";
 import { TurnContext, ActivityTypes, tokenExchangeOperationName, Storage } from "botbuilder";
 import {
   createMicrosoftGraphClient,
+  getResourceConfiguration,
   loadConfiguration,
   OnBehalfOfUserCredential,
+  ResourceType,
   TeamsBotSsoPrompt,
   TeamsBotSsoPromptTokenResponse
 } from "teamsdev-client";
 import "isomorphic-fetch";
+import * as axios from "axios";
 
 const CONFIRM_PROMPT = "ConfirmPrompt";
 const MAIN_DIALOG = "MainDialog";
