@@ -1,11 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-const { ConfirmPrompt, DialogSet, DialogTurnStatus, WaterfallDialog } = require('botbuilder-dialogs');
-const { LogoutDialog } = require('./logoutDialog');
-const { ActivityTypes, tokenExchangeOperationName } = require("botbuilder");
+const { DialogSet, DialogTurnStatus, WaterfallDialog } = require('botbuilder-dialogs');
+const { RootDialog } = require('./rootDialog');
+const { tokenExchangeOperationName, ActivityTypes, CardFactory } = require("botbuilder");
 
-const CONFIRM_PROMPT = 'ConfirmPrompt';
 const MAIN_DIALOG = 'MainDialog';
 const MAIN_WATERFALL_DIALOG = 'MainWaterfallDialog';
 const TEAMS_SSO_PROMPT_ID = "TeamsFxSsoPrompt";
@@ -17,20 +16,20 @@ const {
     OnBehalfOfUserCredential,
     TeamsBotSsoPrompt
 } = require("teamsdev-client");
+const { ResponseType } = require('@microsoft/microsoft-graph-client');
 
-class MainDialog extends LogoutDialog {
+class MainDialog extends RootDialog {
     constructor(dedupStorage) {
-        super(MAIN_DIALOG, process.env.connectionName);
+        super(MAIN_DIALOG);
         this.requiredScopes = ["User.Read"]; // hard code the scopes for demo purpose only
         loadConfiguration();
         this.addDialog(new TeamsBotSsoPrompt(TEAMS_SSO_PROMPT_ID, {
             scopes: this.requiredScopes,
             endOnInvalidMessage: true
         }));
-        this.addDialog(new ConfirmPrompt(CONFIRM_PROMPT));
         this.addDialog(new WaterfallDialog(MAIN_WATERFALL_DIALOG, [
-            this.promptStep.bind(this),
-            this.callApi.bind(this)
+            this.ssoStep.bind(this),
+            this.showUserInfo.bind(this)
         ]));
 
         this.initialDialogId = MAIN_WATERFALL_DIALOG;
@@ -42,6 +41,7 @@ class MainDialog extends LogoutDialog {
      * The run method handles the incoming activity (in the form of a DialogContext) and passes it through the dialog system.
      * If no dialog is active, it will start the default dialog.
      * @param {*} dialogContext
+     * @param {*} accessor
      */
     async run(context, accessor) {
         const dialogSet = new DialogSet(accessor);
@@ -53,22 +53,13 @@ class MainDialog extends LogoutDialog {
         }
     }
 
-    async promptStep(stepContext) {
-        try {
-            return await stepContext.beginDialog(TEAMS_SSO_PROMPT_ID);
-        } catch (err) {
-            console.error(err);
-        }
+    async ssoStep(stepContext) {
+        return await stepContext.beginDialog(TEAMS_SSO_PROMPT_ID);
     }
 
-
-    async callApi(stepContext) {
-        // Get token response
+    async showUserInfo(stepContext) {
         const tokenResponse = stepContext.result;
-
         if (tokenResponse) {
-            await stepContext.context.sendActivity("You are now logged in.");
-
             await stepContext.context.sendActivity("Call Microsoft Graph on behalf of user...");
 
             // Call Microsoft Graph on behalf of user
@@ -79,32 +70,16 @@ class MainDialog extends LogoutDialog {
                 await stepContext.context.sendActivity(`You're logged in as ${me.displayName} (${me.userPrincipalName}); your job title is: ${me.jobTitle}.`);
 
                 // show user picture
-                //var photoBuffer = await graphClient.api("/me/photo/$value").get();
-                // const photoBuffer =await photoResponse.arrayBuffer();
-                // const photoData = photoResponse.data;
-                // const imageUri = 'data:image/png;base64,' + photoData.toString('base64');
-                //const card = CardFactory.thumbnailCard("", CardFactory.images([imageUri]));
-                // await stepContext.context.sendActivity({ attachments: [card] });
+                var photoBinary = await graphClient.api("/me/photo/$value").responseType(ResponseType.ARRAYBUFFER).get();
+                const buffer = Buffer.from(photoBinary);
+                const imageUri = 'data:image/png;base64,' + buffer.toString('base64');
+                const card = CardFactory.thumbnailCard("User Picture", CardFactory.images([imageUri]));
+                await stepContext.context.sendActivity({ attachments: [card] });
             }
             else {
                 await stepContext.context.sendActivity("Getting profile from Microsoft Graph failed! ");
             }
 
-            // Call API hosted in Azure Functions on behalf of user
-            // const apiConfig = getResourceConfiguration(ResourceType.API);
-
-            // const url = apiConfig.endpoint.replace(/\/$/, "");
-            // const response = await axios.default.get(url, {
-            //     headers: {
-            //         authorization: "Bearer " + tokenResponse.ssoToken
-            //     }
-            // });
-            // await stepContext.context.sendActivity(
-            //     "Call API hosted in Azure Functions on behalf of user. API endpoint: " + apiConfig.endpoint
-            // );
-            // await stepContext.context.sendActivity("Response.data: " + JSON.stringify(response.data));
-
-            // console.log(response);
             return await stepContext.endDialog();
         }
 
@@ -114,9 +89,9 @@ class MainDialog extends LogoutDialog {
 
     async onEndDialog(context, instance, reason) {
         const conversationId = context.activity.conversation.id;
-        const currentDedupKeys = this.dedupStorageKeys.filter(key=>key.indexOf(conversationId) > 0);
+        const currentDedupKeys = this.dedupStorageKeys.filter(key => key.indexOf(conversationId) > 0);
         await this.dedupStorage.delete(currentDedupKeys);
-        this.dedupStorageKeys = this.dedupStorageKeys.filter(key=>key.indexOf(conversationId) < 0);
+        this.dedupStorageKeys = this.dedupStorageKeys.filter(key => key.indexOf(conversationId) < 0);
     }
 
     // If a user is signed into multiple Teams clients, the Bot might receive a "signin/tokenExchange" from each client.

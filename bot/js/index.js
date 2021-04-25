@@ -11,7 +11,7 @@ const path = require('path');
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
 const { BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } = require('botbuilder');
 
-const { TeamsBot } = require('./bots/teamsBot');
+const { TeamsBot } = require('./teamsBot');
 const { MainDialog } = require('./dialogs/mainDialog');
 
 // Create adapter.
@@ -64,9 +64,7 @@ const bot = new TeamsBot(conversationState, userState, dialog);
 // Create HTTP server.
 const server = restify.createServer();
 server.listen(process.env.port || process.env.PORT || 3978, function () {
-    console.log(`\n${server.name} listening to ${server.url}`);
-    console.log('\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator');
-    console.log('\nTo talk to your bot, open the emulator select "Open Bot"');
+    console.log(`\nBot started, ${server.name} listening to ${server.url}`);
 });
 
 // Listen for incoming requests.
