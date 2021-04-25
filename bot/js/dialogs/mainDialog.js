@@ -1,11 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-const { DialogSet, DialogTurnStatus, WaterfallDialog, ConfirmPrompt } = require('botbuilder-dialogs');
+const { DialogSet, DialogTurnStatus, WaterfallDialog } = require('botbuilder-dialogs');
 const { RootDialog } = require('./rootDialog');
 const { tokenExchangeOperationName, ActivityTypes, CardFactory } = require("botbuilder");
 
-const CONFIRM_PROMPT = 'ConfirmPrompt';
 const MAIN_DIALOG = 'MainDialog';
 const MAIN_WATERFALL_DIALOG = 'MainWaterfallDialog';
 const TEAMS_SSO_PROMPT_ID = "TeamsFxSsoPrompt";
@@ -28,7 +27,6 @@ class MainDialog extends RootDialog {
             scopes: this.requiredScopes,
             endOnInvalidMessage: true
         }));
-        this.addDialog(new ConfirmPrompt(CONFIRM_PROMPT));
         this.addDialog(new WaterfallDialog(MAIN_WATERFALL_DIALOG, [
             this.ssoStep.bind(this),
             this.showUserInfo.bind(this)
@@ -73,7 +71,6 @@ class MainDialog extends RootDialog {
 
                 // show user picture
                 var photoBinary = await graphClient.api("/me/photo/$value").responseType(ResponseType.ARRAYBUFFER).get();
-                //const photoBuffer =await photoResponse.arrayBuffer();
                 const buffer = Buffer.from(photoBinary);
                 const imageUri = 'data:image/png;base64,' + buffer.toString('base64');
                 const card = CardFactory.thumbnailCard("User Picture", CardFactory.images([imageUri]));
