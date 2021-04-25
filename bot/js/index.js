@@ -80,3 +80,10 @@ server.get(
         directory: path.join(__dirname, 'public')
     })
 );
+
+// Gracefully shutdown HTTP server
+['exit', 'uncaughtException', 'SIGINT', 'SIGTERM', 'SIGUSR1', 'SIGUSR2' ].forEach((event) => {
+    process.on(event, () => {
+        server.close();
+    });
+});
