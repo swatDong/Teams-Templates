@@ -1,4 +1,4 @@
-import { BotState, SigninStateVerificationQuery, TurnContext } from "botbuilder";
+import { BotState, SigninStateVerificationQuery, TurnContext, tokenExchangeOperationName } from "botbuilder";
 import { MainDialog } from "../dialogs/mainDialog";
 import { DialogBot } from "./dialogBot";
 
@@ -36,6 +36,18 @@ export class TeamsBot extends DialogBot {
     context: TurnContext, // really need this?
     query: SigninStateVerificationQuery
   ) {
+    await this.dialog.run(context, this.dialogState);
+  }
+
+  async onSignInInvoke(context: TurnContext) {
+    if (
+      context.activity &&
+      context.activity.name === tokenExchangeOperationName
+    ) {
+      if (await this.dialog.shouldDedup(context)) {
+        return;
+      }
+    }
     await this.dialog.run(context, this.dialogState);
   }
 }

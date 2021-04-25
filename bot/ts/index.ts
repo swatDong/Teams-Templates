@@ -54,12 +54,16 @@ adapter.onTurnError = onTurnErrorHandler;
 // A bot requires a state storage system to persist the dialog and user state between messages.
 const memoryStorage = new MemoryStorage();
 
+// For a distributed bot in production,
+// this requires a distributed storage to ensure only one token exchange is processed.
+const dedupMemory = new MemoryStorage();
+
 // Create conversation and user state with in-memory storage provider.
 const conversationState = new ConversationState(memoryStorage);
 const userState = new UserState(memoryStorage);
 
 // Create the main dialog.
-const dialog = new MainDialog();
+const dialog = new MainDialog(dedupMemory);
 // Create the bot that will handle incoming messages.
 const bot = new TeamsBot(conversationState, userState, dialog);
 
