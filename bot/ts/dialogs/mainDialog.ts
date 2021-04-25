@@ -1,16 +1,13 @@
-import { ConfirmPrompt, DialogSet, DialogTurnStatus, WaterfallDialog } from "botbuilder-dialogs";
+import { DialogSet, DialogTurnStatus, WaterfallDialog } from "botbuilder-dialogs";
 import { LogoutDialog } from "./logoutDialog";
-import { TurnContext, MemoryStorage, ActivityTypes, tokenExchangeOperationName } from "botbuilder";
+import { TurnContext, ActivityTypes, tokenExchangeOperationName, Storage } from "botbuilder";
 import {
   createMicrosoftGraphClient,
-  getResourceConfiguration,
   loadConfiguration,
   OnBehalfOfUserCredential,
-  ResourceType,
   TeamsBotSsoPrompt,
   TeamsBotSsoPromptTokenResponse
 } from "teamsdev-client";
-import * as axios from "axios";
 import "isomorphic-fetch";
 
 const CONFIRM_PROMPT = "ConfirmPrompt";
@@ -20,12 +17,12 @@ const TEAMS_SSO_PROMPT_ID = "ModsSsoPrompt";
 
 export class MainDialog extends LogoutDialog {
   private requiredScopes: string[] = ["User.Read"]; // hard code the scopes for demo purpose only
-  private dedupStorage: MemoryStorage;
+  private dedupStorage: Storage;
   private dedupStorageKeys: string[];
 
   // Developer controlls the lifecycle of credential provider, as well as the cache in it.
   // In this sample the provider is shared in all conversations
-  constructor(dedupStorage: MemoryStorage) {
+  constructor(dedupStorage: Storage) {
     super(MAIN_DIALOG, process.env.connectionName);
     loadConfiguration();
     this.addDialog(
